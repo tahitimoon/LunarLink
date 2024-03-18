@@ -2,15 +2,6 @@
 
 仅本地快速部署体验之用，如果本地开发还是参照`LunarLink`目录下的说明，搭建开发环境
 
-## 修改配置
-
-```sh
-cd LunarLink/backend/conf
-# 将docker_example.py内容复制到docker.py中
-cd LunarLink/deployment/web
-# 将nginx_example.conf内容复制到nginx.conf中
-```
-
 ## docker compose
 
 在`LunarLink`目录下，执行`docker-compose up -d`
