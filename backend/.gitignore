@@ -1,0 +1,26 @@
+*.log
+*.pyc
+*.iml
+.idea
+.env
+celerybeat.pid
+start.sh.bak
+mysql
+/venv/
+/CACHE/
+
+
+# web
+.DS_Store
+web/node_modules/
+web/dist/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor directories and files
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln

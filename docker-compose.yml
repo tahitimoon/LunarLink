@@ -1,0 +1,149 @@
+version: "3"
+services:
+  lunar-link-django:
+    build:
+      context: .
+      dockerfile: ./deployment/django/Dockerfile
+    image: lunar-link-django
+    container_name: lunar-link-django
+    working_dir: /backend
+    environment:
+      PYTHONUNBUFFERED: 1
+      TZ: Asia/Shanghai
+    ports:
+      - "8000:8000"
+    expose:
+      - 8000
+    restart: always
+    networks:
+      network:
+        ipv4_address: 177.8.0.12
+
+  lunar-link-web:
+    build:
+      context: ./
+      dockerfile: ./deployment/web/Dockerfile
+    image: lunar-link-web
+    container_name: lunar-link-web
+    depends_on:
+      - lunar-link-django
+    ports:
+      - "8080:8080"
+    expose:
+      - 8081
+    volumes:
+      - ./deployment/web/nginx.conf:/etc/nginx/conf.d/lunar_link.conf
+    environment:
+      TZ: Asia/Shanghai
+    restart: always
+    networks:
+      network:
+        ipv4_address: 177.8.0.11
+
+  lunar-link-celery:
+    build:
+      context: .
+      dockerfile: ./deployment/celery/Dockerfile
+    image: lunar-link-celery
+    container_name: lunar-link-celery
+    depends_on:
+      - lunar-link-mysql
+    environment:
+      PYTHONUNBUFFERED: 1
+      TZ: Asia/Shanghai
+    restart: always
+    networks:
+      network:
+        ipv4_address: 177.8.0.14
+
+  lunar-link-proxy:
+    build:
+      context: .
+      dockerfile: ./deployment/proxy/Dockerfile
+    image: lunar-link-proxy
+    container_name: lunar-link-proxy
+    depends_on:
+      - lunar-link-django
+    environment:
+      PYTHONUNBUFFERED: 1
+      TZ: Asia/Shanghai
+    ports:
+      - "7778:7778"
+    expose:
+      - 7778
+    restart: always
+    networks:
+      network:
+        ipv4_address: 177.8.0.16
+
+  lunar-link-mysql:
+    # 如果您是 arm64 架构：如 MacOS 的 M1，请修改镜像为 image: mysql/mysql-server:8.0.21
+    image: mysql:8.0.21
+    container_name: lunar-link-mysql
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    privileged: true
+    restart: always
+    ports:
+      - "3308:3306"
+    expose:
+      - 3306
+    environment:
+      MYSQL_DATABASE: "lunarlink"
+      MYSQL_ROOT_PASSWORD: "root"
+      TZ: Asia/Shanghai
+    volumes:
+      - mysql:/var/lib/mysql
+      - ./deployment/mysql/conf.d:/etc/mysql/conf.d
+      - ./deployment/mysql/init:/docker-entrypoint-initdb.d
+      - ./deployment/mysql/logs:/logs
+    networks:
+      network:
+        ipv4_address: 177.8.0.13
+
+  lunar-link-rabbitmq:
+    image: rabbitmq:3-management
+    container_name: lunar-link-rabbitmq
+    restart: always
+    ports:
+      - "5672:5672"
+    expose:
+      - 5672
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+      TZ: Asia/Shanghai
+    volumes:
+      - rabbitmq:/var/lib/rabbitmq
+    networks:
+      network:
+        ipv4_address: 177.8.0.15
+
+  lunar-link-redis:
+    image: redis:6.2.6-alpine
+    container_name: lunar-link-redis
+    restart: always
+    ports:
+      - "6379:6379"
+    expose:
+      - 6379
+    environment:
+      TZ: Asia/Shanghai
+    command: redis-server --requirepass 123456
+    volumes:
+      - redis:/data
+      - ./deployment/redis/redis.conf:/etc/redis/redis.conf
+    networks:
+      network:
+        ipv4_address: 177.8.0.17
+
+volumes:
+    mysql:
+    rabbitmq:
+    redis:
+
+networks:
+    network:
+        ipam:
+            driver: default
+            config:
+                - subnet: '177.8.0.0/16'
