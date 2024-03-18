@@ -8,7 +8,7 @@
 
 ## 创建数据库
 
-连接数据库，如使用`Navicat Premium`建立连接，创建`fast_dev`库，字符集为`utf8mb4`，排序规则为`utf8mb4_unicode_ci`
+连接数据库，如使用`Navicat Premium`建立连接，创建`lunarlink`库，字符集为`utf8mb4`，排序规则为`utf8mb4_unicode_ci`
 
 ## 第一次运行
 
