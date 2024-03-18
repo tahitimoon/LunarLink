@@ -12,7 +12,7 @@
 
 ## 第一次运行
 
-进入django容器初始化数据库`docker exec -it faster-runner-django /bin/bash`
+进入django容器初始化数据库`docker exec -it lunar-link-django /bin/bash`
 
 ```bash
 # 执行迁移命令：
