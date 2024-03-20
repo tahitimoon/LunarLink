@@ -4,11 +4,13 @@
 
 ## docker compose
 
-在`LunarLink`目录下，执行`docker-compose up -d`
+```bash
+# 进入项目根目录
+cd LunarLink
 
-## 创建数据库
-
-连接数据库，如使用`Navicat Premium`建立连接，创建`lunarlink`库，字符集为`utf8mb4`，排序规则为`utf8mb4_unicode_ci`
+# 执行如下命令即可启动所有服务
+docker-compose up -d
+```
 
 ## 第一次运行
 
