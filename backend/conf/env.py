@@ -5,7 +5,7 @@
 @Author  : geekbing
 @LastEditTime : -
 @LastEditors : -
-@Description : -
+@Description : 本地开发环境配置
 """
 # ================================================= #
 # ************** mysql数据库 配置  ************** #

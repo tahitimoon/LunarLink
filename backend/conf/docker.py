@@ -5,7 +5,7 @@
 @Author  : geekbing
 @LastEditTime : -
 @LastEditors : -
-@Description : docker本地部署配置
+@Description : 本地docker部署配置
 """
 # ================================================= #
 # ************** mysql数据库 配置  ************** #
