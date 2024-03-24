@@ -123,13 +123,16 @@ celery -A backend worker -B --loglevel=info
 
 ##  演示图 ✅
 
-![](screenshots/1.png)
+![](https://tahitimoon.oss-cn-shenzhen.aliyuncs.com/img/1.png)
 
-![](screenshots/2.png)
+![](https://tahitimoon.oss-cn-shenzhen.aliyuncs.com/img/2.png)
 
-![](screenshots/3.png)
+![](https://tahitimoon.oss-cn-shenzhen.aliyuncs.com/img/3.png)
 
-![](screenshots/4.png)
+![](https://tahitimoon.oss-cn-shenzhen.aliyuncs.com/img/4.png)
+
+![](https://tahitimoon.oss-cn-shenzhen.aliyuncs.com/img/test_case26.gif
+)
 
 ##  Docker构建
 请参考文档[Docker构建](deployment/README.md)
