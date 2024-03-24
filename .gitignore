@@ -1,7 +1,11 @@
 /backend/venv
 /backend/.idea
 /web/.idea
-.idea
 
+.idea
+.env
 .history/
 .vscode/
+
+*.sh
+docker-compose-prod.yml

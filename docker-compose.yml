@@ -10,6 +10,8 @@ services:
     environment:
       PYTHONUNBUFFERED: 1
       TZ: Asia/Shanghai
+    env_file:
+      - .env
     ports:
       - "8000:8000"
     expose:
@@ -28,9 +30,9 @@ services:
     depends_on:
       - lunar-link-django
     ports:
-      - "8080:8080"
+      - "8081:8081"
     expose:
-      - 8080
+      - 8081
     volumes:
       - ./deployment/web/nginx.conf:/etc/nginx/conf.d/lunar_link.conf
     environment:
@@ -51,6 +53,8 @@ services:
     environment:
       PYTHONUNBUFFERED: 1
       TZ: Asia/Shanghai
+    env_file:
+      - .env
     restart: always
     networks:
       network:
@@ -67,6 +71,8 @@ services:
     environment:
       PYTHONUNBUFFERED: 1
       TZ: Asia/Shanghai
+    env_file:
+      - .env
     ports:
       - "7778:7778"
     expose:
@@ -78,7 +84,7 @@ services:
 
   lunar-link-mysql:
     # 如果您是 arm64 架构：如 MacOS 的 M1，请修改镜像为 image: mysql/mysql-server:8.0.21
-    image: mysql:8.0.21
+    image: mysql/mysql-server:8.0.21
     container_name: lunar-link-mysql
     command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
     privileged: true

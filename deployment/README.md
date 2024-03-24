@@ -1,14 +1,23 @@
 # Docker构建
 
-仅本地快速部署体验之用，如果本地开发还是参照`LunarLink`目录下的说明，搭建开发环境
+本地快速部署或线上单机部署参照如下说明
 
-## docker compose
+如果本地开发还是参照`LunarLink`目录下的说明，搭建开发环境
+
+## 修改配置
 
 ```bash
 # 进入项目根目录
 cd LunarLink
 
-# 执行如下命令即可启动所有服务
+# 将.env.example文件重命名为.env 并配置相关参数
+mv .env.example .env
+```
+
+## docker compose
+
+```bash
+# 在根目录，执行如下命令
 docker-compose up -d
 ```
 
@@ -28,13 +37,13 @@ python3 manage.py createsuperuser
 
 ```
 浏览器打开:
-http://localhost:8080
+http://localhost:8081
 用户/密码:管理员用户/密码
 ```
 
 ## 服务端口
 
-- web: 8080
+- web: 8081
 - api: 8000
 - mysql: 3306
 - rabbitmq: 5672
