@@ -2,7 +2,7 @@
 """
 @File    : suite.py
 @Time    : 2023/2/23 15:50
-@Author  : geekbing
+@Author  : Jiang Bing
 @LastEditTime : -
 @LastEditors : -
 @Description : 测试用例

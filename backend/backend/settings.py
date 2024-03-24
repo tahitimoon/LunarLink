@@ -89,7 +89,6 @@ TEMPLATES = [
 ASGI_APPLICATION = "backend.asgi.application"
 WSGI_APPLICATION = "backend.wsgi.application"
 
-
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
@@ -204,10 +203,10 @@ for level in ["INFO", "WARNING", "ERROR"]:
     logger.add(
         f"logs/{level.lower()}.log",
         format="{time:YYYY-MM-DD HH:mm:ss.SSS}"
-        " [pid:{process} -> thread:{thread.name}]"
-        " {level}"
-        " [{name}:{function}:{line}]"
-        " {message}",
+               " [pid:{process} -> thread:{thread.name}]"
+               " {level}"
+               " [{name}:{function}:{line}]"
+               " {message}",
         level=level,
         rotation="00:00",
         retention="14 days",
@@ -224,7 +223,7 @@ LOGGING = {
         "color": {
             "()": "colorlog.ColoredFormatter",
             "format": "%(green)s%(asctime)s [%(request_id)s] %(name)s %(log_color)s%(levelname)s [pid:%(process)d] "
-            "[%(filename)s->%(funcName)s:%(lineno)s] %(cyan)s%(message)s",
+                      "[%(filename)s->%(funcName)s:%(lineno)s] %(cyan)s%(message)s",
             "log_colors": {
                 "DEBUG": "black",
                 "INFO": "white",
@@ -292,7 +291,6 @@ CELERY_ENABLE_UTC = False  # 时区设置
 
 # 设置请求体的最大大小
 DATA_UPLOAD_MAX_MEMORY_SIZE = 52428800  # 50M
-
 
 LOG_REQUEST_ID_HEADER = "HTTP_X_REQUEST_ID"
 GENERATE_REQUEST_ID_IF_NOT_IN_HEADER = True

@@ -2,7 +2,7 @@
 """
 @File    : pagination.py
 @Time    : 2023/1/13 16:06
-@Author  : geekbing
+@Author  : Jiang Bing
 @LastEditTime : -
 @LastEditors : -
 @Description : 分页查询

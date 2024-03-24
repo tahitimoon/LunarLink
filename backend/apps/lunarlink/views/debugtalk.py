@@ -2,7 +2,7 @@
 """
 @File    : debugtalk.py
 @Time    : 2023/2/22 15:07
-@Author  : geekbing
+@Author  : Jiang Bing
 @LastEditTime : -
 @LastEditors : -
 @Description : 驱动代码视图

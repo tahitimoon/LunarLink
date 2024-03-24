@@ -2,7 +2,7 @@
 """
 @File    : auth.py
 @Time    : 2023/1/13 15:06
-@Author  : geekbing
+@Author  : Jiang Bing
 @LastEditTime : -
 @LastEditors : -
 @Description : 登录认证

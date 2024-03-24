@@ -2,7 +2,7 @@
 """
 @File    : convert2hrp.py
 @Time    : 2023/2/13 10:29
-@Author  : geekbing
+@Author  : Jiang Bing
 @LastEditTime : -
 @LastEditors : -
 @Description : -

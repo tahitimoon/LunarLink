@@ -2,9 +2,9 @@
 """
 @File    : testcase_schema.py
 @Time    : 2023/9/11 16:05
-@Author  : geekbing
+@Author  : Jiang Bing
 @LastEditTime : 2023/10/09 16:05
-@LastEditors : geekbing
+@LastEditors : Jiang Bing
 @Description : API、Case数据模板
 """
 from typing import Dict, List

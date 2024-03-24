@@ -2,7 +2,7 @@
 """
 @File    : redis_manager.py
 @Time    : 2023/9/7 18:42
-@Author  : geekbing
+@Author  : Jiang Bing
 @LastEditTime : -
 @LastEditors : -
 @Description : redis客户端Manager

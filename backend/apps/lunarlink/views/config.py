@@ -2,7 +2,7 @@
 """
 @File    : config.py
 @Time    : 2023/2/20 14:37
-@Author  : geekbing
+@Author  : Jiang Bing
 @LastEditTime : -
 @LastEditors : -
 @Description : 配置管理视图

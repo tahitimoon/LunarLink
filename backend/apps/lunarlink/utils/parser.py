@@ -2,7 +2,7 @@
 """
 @File    : parser.py
 @Time    : 2023/1/14 15:10
-@Author  : geekbing
+@Author  : Jiang Bing
 @LastEditTime : -
 @LastEditors : -
 @Description : API用例解析

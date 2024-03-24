@@ -2,7 +2,7 @@
 """
 @File    : proxy.py
 @Time    : 2023/9/8 17:06
-@Author  : geekbing
+@Author  : Jiang Bing
 @LastEditTime : -
 @LastEditors : -
 @Description : 启动录制代理

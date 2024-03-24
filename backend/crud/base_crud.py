@@ -2,7 +2,7 @@
 """
 @File    : base_curd.py
 @Time    : 2023/1/14 16:22
-@Author  : geekbing
+@Author  : Jiang Bing
 @LastEditTime : -
 @LastEditors : -
 @Description : -

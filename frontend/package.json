@@ -2,7 +2,7 @@
     "name": "api-web",
     "version": "1.0.0",
     "description": "一个基于Vue.js的接口自动化测试平台, 提供API用例的录入, 执行和监控",
-    "author": "geekbing",
+    "author": "Jiang Bing",
     "private": true,
     "scripts": {
         "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js --open=false",

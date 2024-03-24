@@ -2,7 +2,7 @@
 """
 @File    : record.py
 @Time    : 2023/9/7 19:10
-@Author  : geekbing
+@Author  : Jiang Bing
 @LastEditTime : -
 @LastEditors : -
 @Description : 流量录制->生成case功能

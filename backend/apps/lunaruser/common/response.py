@@ -2,7 +2,7 @@
 """
 @File    : response.py
 @Time    : 2023/1/13 11:34
-@Author  : geekbing
+@Author  : Jiang Bing
 @LastEditTime : -
 @LastEditors : -
 @Description : 响应错误码信息

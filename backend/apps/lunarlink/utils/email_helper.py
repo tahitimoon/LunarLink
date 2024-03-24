@@ -2,7 +2,7 @@
 """
 @File    : email_helper.py
 @Time    : 2023/9/8 11:05
-@Author  : geekbing
+@Author  : Jiang Bing
 @LastEditTime : -
 @LastEditors : -
 @Description : 邮件发送

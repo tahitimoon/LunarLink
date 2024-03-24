@@ -2,7 +2,7 @@
 """
 @File    : generator.py
 @Time    : 2023/9/11 15:47
-@Author  : geekbing
+@Author  : Jiang Bing
 @LastEditTime : -
 @LastEditors : -
 @Description : 根据RequestInfo生成测试用例

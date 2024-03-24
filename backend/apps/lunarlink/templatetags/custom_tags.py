@@ -2,7 +2,7 @@
 """
 @File    : custom_tags.py
 @Time    : 2023/3/8 11:29
-@Author  : geekbing
+@Author  : Jiang Bing
 @LastEditTime : -
 @LastEditors : -
 @Description : 格式化测试报告中的JSON

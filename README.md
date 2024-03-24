@@ -82,16 +82,23 @@ yarn start
 ```bash
 # 克隆项目
 git https://github.com/tahitimoon/LunarLink.git
+
 # 进入项目目录
 cd LunarLink/backend
-# 在 config/env.py 中配置数据库信息
+
+# 将.env.example文件重命名为.env 并配置相关参数
+mv .env.example .env
+
 # 安装依赖环境
 pip3 install -r requirements.txt
+
 # 执行迁移命令：
 python3 manage.py makemigrations
 python3 manage.py migrate
+
 # 创建管理员用户
 python3 manage.py createsuperuser
+
 # 启动项目
 python3 manage.py runserver
 ```

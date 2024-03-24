@@ -2,7 +2,7 @@
 """
 @File    : permissions.py
 @Time    : 2023/8/23 14:46
-@Author  : geekbing
+@Author  : Jiang Bing
 @LastEditTime : -
 @LastEditors : -
 @Description : 自定义权限类

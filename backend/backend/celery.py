@@ -2,7 +2,7 @@
 """
 @File    : mycelery.py.py
 @Time    : 2023/3/9 16:16
-@Author  : geekbing
+@Author  : Jiang Bing
 @LastEditTime : -
 @LastEditors : -
 @Description : 设置环境变量，配置Celery应用程序

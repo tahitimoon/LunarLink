@@ -2,7 +2,7 @@
 """
 @File    : error.py
 @Time    : 2023/10/9 15:42
-@Author  : geekbing
+@Author  : Jiang Bing
 @LastEditTime : -
 @LastEditors : -
 @Description : -

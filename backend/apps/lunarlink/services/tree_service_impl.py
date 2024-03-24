@@ -2,9 +2,9 @@
 """
 @File    : tree_service_impl.py
 @Time    : 2023/1/14 16:10
-@Author  : geekbing
+@Author  : Jiang Bing
 @LastEditTime : 2023/7/27 21:10
-@LastEditors : geekbing
+@LastEditors : Jiang Bing
 @Description : 树形结构操作
 """
 from ast import literal_eval

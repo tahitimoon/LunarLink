@@ -2,7 +2,7 @@
 """
 @File    : auxiliary_func.py
 @Time    : 2022/12/6 15:56
-@Author  : geekbing
+@Author  : Jiang Bing
 @LastEditTime : -
 @LastEditors : -
 @Description : -

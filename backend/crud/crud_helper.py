@@ -2,7 +2,7 @@
 """
 @File    : crud_helper.py
 @Time    : 2023/1/14 16:23
-@Author  : geekbing
+@Author  : Jiang Bing
 @LastEditTime : -
 @LastEditors : -
 @Description : -

@@ -2,7 +2,7 @@
 """
 @File    : har_convertor.py
 @Time    : 2023/9/11 15:48
-@Author  : geekbing
+@Author  : Jiang Bing
 @LastEditTime : -
 @LastEditors : -
 @Description : request转化器，支持har

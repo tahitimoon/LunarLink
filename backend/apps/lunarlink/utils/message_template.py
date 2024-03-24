@@ -2,7 +2,7 @@
 """
 @File    : message_template.py
 @Time    : 2023/11/21 17:29
-@Author  : geekbing
+@Author  : Jiang Bing
 @LastEditTime : -
 @LastEditors : -
 @Description : 消息模板

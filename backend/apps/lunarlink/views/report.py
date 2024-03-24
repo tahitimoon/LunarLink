@@ -2,7 +2,7 @@
 """
 @File    : report.py
 @Time    : 2023/2/13 09:42
-@Author  : geekbing
+@Author  : Jiang Bing
 @LastEditTime : -
 @LastEditors : -
 @Description : 测试报告视图

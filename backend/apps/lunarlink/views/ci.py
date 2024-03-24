@@ -2,7 +2,7 @@
 """
 @File    : CI.py
 @Time    : 2023/3/14 11:25
-@Author  : geekbing
+@Author  : Jiang Bing
 @LastEditTime : -
 @LastEditors : -
 @Description : 持续集成CI视图

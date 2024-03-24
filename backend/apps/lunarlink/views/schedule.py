@@ -2,7 +2,7 @@
 """
 @File    : schedule.py
 @Time    : 2023/3/9 10:42
-@Author  : geekbing
+@Author  : Jiang Bing
 @LastEditTime : -
 @LastEditors : -
 @Description : 定时任务视图

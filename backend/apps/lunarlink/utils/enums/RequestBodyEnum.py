@@ -2,7 +2,7 @@
 """
 @File    : RequestBodyEnum.py
 @Time    : 2023/9/11 16:01
-@Author  : geekbing
+@Author  : Jiang Bing
 @LastEditTime : -
 @LastEditors : -
 @Description : 请求数据类型

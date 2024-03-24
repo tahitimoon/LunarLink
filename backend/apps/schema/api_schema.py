@@ -2,7 +2,7 @@
 """
 @File    : api_schema.py
 @Time    : 2023/12/14 11:16
-@Author  : geekbing
+@Author  : Jiang Bing
 @LastEditTime : -
 @LastEditors : -
 @Description : API数据模板

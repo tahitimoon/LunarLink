@@ -2,7 +2,7 @@
 """
 @File    : request_util.py
 @Time    : 2024/1/15 10:15
-@Author  : geekbing
+@Author  : Jiang Bing
 @LastEditTime : -
 @LastEditors : -
 @Description : Request工具类

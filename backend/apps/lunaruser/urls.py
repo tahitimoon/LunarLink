@@ -2,7 +2,7 @@
 """
 @File    : urls.py
 @Time    : 2023/1/13 16:09
-@Author  : geekbing
+@Author  : Jiang Bing
 @LastEditTime : -
 @LastEditors : -
 @Description : 接口路径

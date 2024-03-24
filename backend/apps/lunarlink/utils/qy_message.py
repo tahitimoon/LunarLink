@@ -2,7 +2,7 @@
 """
 @File    : qy_message.py
 @Time    : 2023/3/13 14:04
-@Author  : geekbing
+@Author  : Jiang Bing
 @LastEditTime : -
 @LastEditors : -
 @Description : 企微机器人发送消息

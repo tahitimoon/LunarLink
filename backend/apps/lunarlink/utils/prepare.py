@@ -2,7 +2,7 @@
 """
 @File    : prepare.py
 @Time    : 2023/1/16 17:02
-@Author  : geekbing
+@Author  : Jiang Bing
 @LastEditTime : -
 @LastEditors : -
 @Description : 

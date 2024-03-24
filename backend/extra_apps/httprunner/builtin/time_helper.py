@@ -2,7 +2,7 @@
 """
 @File    : time_helper.py
 @Time    : 2023/1/14 17:09
-@Author  : geekbing
+@Author  : Jiang Bing
 @LastEditTime : -
 @LastEditors : -
 @Description : -

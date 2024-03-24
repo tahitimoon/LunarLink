@@ -2,7 +2,7 @@
 """
 @File    : middleware.py
 @Time    : 2023/3/20 15:14
-@Author  : geekbing
+@Author  : Jiang Bing
 @LastEditTime : -
 @LastEditors : -
 @Description : 记录用户访问网站的行为和数据，并存入数据库

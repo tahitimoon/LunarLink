@@ -2,7 +2,7 @@
 """
 @File    : serializers.py
 @Time    : 2023/1/14 14:25
-@Author  : geekbing
+@Author  : Jiang Bing
 @LastEditTime : -
 @LastEditors : -
 @Description : 序列化&反序列化

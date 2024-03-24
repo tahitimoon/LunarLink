@@ -2,7 +2,7 @@
 """
 @File    : ws_connection_manager.py
 @Time    : 2023/9/12 17:09
-@Author  : geekbing
+@Author  : Jiang Bing
 @LastEditTime : -
 @LastEditors : -
 @Description : -

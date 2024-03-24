@@ -2,7 +2,7 @@
 """
 @File    : request.py
 @Time    : 2023/9/8 15:06
-@Author  : geekbing
+@Author  : Jiang Bing
 @LastEditTime : -
 @LastEditors : -
 @Description : 转化mitmproxy请求和响应数据（request and response data）

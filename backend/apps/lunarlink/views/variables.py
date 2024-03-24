@@ -2,7 +2,7 @@
 """
 @File    : variables.py
 @Time    : 2023/2/22 10:42
-@Author  : geekbing
+@Author  : Jiang Bing
 @LastEditTime : -
 @LastEditors : -
 @Description : 全局变量视图

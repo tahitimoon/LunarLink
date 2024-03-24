@@ -2,7 +2,7 @@
 """
 @File    : urls.py
 @Time    : 2023/1/14 11:23
-@Author  : geekbing
+@Author  : Jiang Bing
 @LastEditTime : -
 @LastEditors : -
 @Description : -

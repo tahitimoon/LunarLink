@@ -2,7 +2,7 @@
 """
 @File    : tasks.py
 @Time    : 2023/2/6 11:07
-@Author  : geekbing
+@Author  : Jiang Bing
 @LastEditTime : -
 @LastEditors : -
 @Description : 定时任务、异步任务
