@@ -19,7 +19,7 @@ load_dotenv()
 # 数据库地址
 DATABASE_HOST = os.getenv("DATABASE_HOST")
 # 数据库端口
-DATABASE_PORT = os.getenv("DATABASE_PORT", 3308)
+DATABASE_PORT = os.getenv("DATABASE_PORT", 3306)
 # 数据库用户名
 DATABASE_USER = os.getenv("DATABASE_USER")
 # 数据库密码
