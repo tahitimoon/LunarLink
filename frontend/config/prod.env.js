@@ -3,9 +3,9 @@
 const LunarLink = process.env.LUNAR_LINK || "LunarLink";
 module.exports = {
     NODE_ENV: '"production"',
-    DOCS_URL: '"https://lunarlink-doc.vercel.app/docs/guide/introduce.html"',
+    DOCS_URL: '"https://lunar-link-docs.fun/docs/guide/introduce.html"',
     LUNAR_LINK: "'" + LunarLink + "'",
     RECORD_CASE_DOCS_URL:
-        '"https://lunarlink-doc.vercel.app/docs/guide/test_case.html"',
+        '"https://lunar-link-docs.fun/docs/guide/test_case.html"',
     VUE_APP_BASE_URL: '""'
 };
