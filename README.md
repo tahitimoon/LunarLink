@@ -49,7 +49,7 @@
 ```
 Python >= 3.9.5 (推荐3.9.x版本)
 nodejs >= 16.0 (推荐最新)
-Mysql >= 5.7.0 (推荐5.7.x版本)
+Mysql >= 8.0.0 (推荐8.0.x版本)
 RabbitMQ >= 3.x-management(默认需要，推荐最新版)
 Redis >= 6.2.6
 ```
