@@ -104,7 +104,7 @@ class FileLoader:
         """
         debugtalk_module = {"variables": {}, "functions": {}}
         debugtalk_module_name = "debugtalk"
-        # 修复切换项目后，debugtalk有缓存
+        # 修复切换项目后，debugtalk 有缓存
         if sys.modules.get(debugtalk_module_name):
             del sys.modules[debugtalk_module_name]
         sys.path.insert(0, file_path)
@@ -126,59 +126,6 @@ class FileLoader:
         return debugtalk_module
 
 
-def parse_validate_and_extract(
-    list_of_dict: List,
-    variables_mapping: Dict,
-    functions_mapping: Dict,
-    api_variables: List,
-) -> None:
-    """
-    :param list_of_dict:
-    :param variables_mapping:
-    :param functions_mapping:
-    :param api_variables:
-    :return: 引用传参，直接修改dict的内容，不需要返回
-    """
-
-    # 获取api中所有变量的key
-    api_variables_key = []
-    for variable in api_variables:
-        api_variables_key.extend(list(variable.keys()))
-
-    for index, d in enumerate(list_of_dict):
-        is_need_parse = True
-        # extract: d是{"k": "v"}, v类型是str
-        # validate: d是{"equals": ["v1", "v2"]}, v类型是list
-        v = list(d.values())[0]
-        try:
-            # validate, extract的值包含了api variable的key中，不需要替换
-            for key in api_variables_key:
-                if isinstance(v, str):
-                    if key in v:
-                        is_need_parse = False
-                elif isinstance(v, list):
-                    # v[1]需要统一转换成str类型，否则v[1]是int类型就会报错
-                    if key in str(v[1]):
-                        is_need_parse = False
-
-            if is_need_parse is True:
-                d = parser.parse_data(
-                    content=d,
-                    variables_mapping=variables_mapping,
-                    functions_mapping=functions_mapping,
-                )
-                for k, v in d.items():
-                    v = parser.parse_string_functions(
-                        content=v,
-                        variables_mapping=variables_mapping,
-                        functions_mapping=functions_mapping,
-                    )
-                    d[k] = v
-                list_of_dict[index] = d
-        except (FunctionNotFound, VariableNotFound):
-            continue
-
-
 def load_debugtalk(project: int):
     """
     import debugtalk.py in sys.path and reload
@@ -188,7 +135,6 @@ def load_debugtalk(project: int):
     # debugtalk.py
     code = models.Debugtalk.objects.get(project__id=project).code
 
-    # file_path = os.path.join(tempfile.mkdtemp(prefix='LunarLink'), "debugtalk.py)
     tempfile_path = tempfile.mkdtemp(
         prefix="LunarLink", dir=os.path.join(BASE_DIR, "tempWorkDir")
     )
@@ -204,17 +150,30 @@ def load_debugtalk(project: int):
         shutil.rmtree(os.path.dirname(file_path))
 
 
-def parse_tests(testcases: List, debugtalk: Dict, name=None, config=None, project=None):
-    """get test case structure
+def parse_tests(
+    testcases: List,
+    debugtalk: Dict,
+    name=None,
+    config=None,
+    project=None,
+):
+    """
+    get test case structure
+
     :param testcases:
-    :param debugtalk:
+    :param debugtalk: 驱动代码
     :param name:
-    :param config:
+    :param config: 配置文件
     :param project:
     :return:
     """
 
-    refs = {"env": {}, "def-api": {}, "def-testcase": {}, "debugtalk": debugtalk}
+    refs = {
+        "env": {},
+        "def-api": {},
+        "def-testcase": {},
+        "debugtalk": debugtalk,
+    }
 
     test_set = {
         "config": {"name": testcases[-1]["name"], "variables": []},
@@ -240,8 +199,8 @@ def parse_tests(testcases: List, debugtalk: Dict, name=None, config=None, projec
         if item["key"] not in all_config_variables_keys:
             global_variables_list_of_dict.append({item["key"]: item["value"]})
 
-    # 有variables就直接extend，没有就加一个[], 再extend
-    # 配置的variables和全局变量重叠，优先使用配置中的variables
+    # 有 variables 就直接 extend，没有就加一个[], 再 extend
+    # 配置的 variables 和全局变量重叠，优先使用配置中的 variables
     test_set["config"].setdefault("variables", []).extend(global_variables_list_of_dict)
     test_set["config"]["refs"] = refs
 
@@ -250,27 +209,6 @@ def parse_tests(testcases: List, debugtalk: Dict, name=None, config=None, projec
     if config:
         for variables in config["variables"]:
             variables_mapping.update(variables)
-
-    # 驱动代码中的所有函数
-    functions_mapping = debugtalk.get("functions", {})
-
-    # 替换extract, validate中的变量和函数，只对value有效，key无效
-    for testcase in testcases:
-        extract: List = testcase.get("extract", [])
-        validate: List = testcase.get("validate", [])
-        api_variables: List = testcase.get("variables", [])
-        parse_validate_and_extract(
-            list_of_dict=extract,
-            variables_mapping=variables_mapping,
-            functions_mapping=functions_mapping,
-            api_variables=api_variables,
-        )
-        parse_validate_and_extract(
-            list_of_dict=validate,
-            variables_mapping=variables_mapping,
-            functions_mapping=functions_mapping,
-            api_variables=api_variables,
-        )
 
     return test_set
 
@@ -284,7 +222,8 @@ def debug_api(
     user=None,
 ):
     """
-    debug api
+    调式接口
+
     :param api:
     :param project:
     :param name:
@@ -304,7 +243,7 @@ def debug_api(
         """
         api = [api]
 
-    # 参数化过滤，只加载api中调用到的参数
+    # 参数化参数过滤，只加载api中调用到的参数
     if config and config.get("parameters"):
         api_params = []
         for item in api:
@@ -334,7 +273,6 @@ def debug_api(
     debugtalk_path = debugtalk[1]
     os.chdir(os.path.dirname(debugtalk_path))
     try:
-        # testcase_list = [parse_tests(api, load_debugtalk(project), name=name, config=config)]
         testcase_list = [
             parse_tests(
                 testcases=api,
@@ -352,9 +290,15 @@ def debug_api(
 
         if save:
             # 保存报告信息
-            save_summary(name, summary, project, report_type=1, user=user)
+            save_summary(
+                name=name,
+                summary=summary,
+                project=project,
+                report_type=1,
+                user=user,
+            )
 
-        # 复制一份response的json
+        # 复制一份 response 的 json
         for details in summary.get("details", []):
             for record in details.get("records", []):
                 json_data = record["meta_data"]["response"].pop("json", {})
