@@ -84,7 +84,11 @@ class CaseGenerator:
         :param input_string:
         :return: 返回http_res_INDEX, http_res_INDEX_variable, path
         """
-        matches = re.findall(r"\$http_res_(\d+)_(.*?)::(.+)", input_string)
+        if isinstance(input_string, str):
+            matches = re.findall(r"\$http_res_(\d+)_(.*?)::(.+)", input_string)
+        else:
+            matches = []
+
         if matches:
             idx, var_name, path = matches[0]
             full_variable = "http_res_" + idx + "_" + var_name
@@ -118,7 +122,7 @@ class CaseGenerator:
         record_case_body = [config]
         api_info_map = {}
 
-        # 先将requests转成faster格式api
+        # 先将 requests 转成 faster 格式 api
         for r in range(len(requests)):
             api_info = APIBodySchema()  # 初始化 faster 格式的 api 模板
             api_name = f"http_res_{r + 1}"
@@ -136,7 +140,7 @@ class CaseGenerator:
 
             api_info_map.update({api_name: api_info.dict(by_alias=True)})  # 保持别名
 
-        # 遍历所有接口，将htt_res_1_token的值content.token加入extract
+        # 遍历所有接口，将 htt_res_1_token 的值 content.token 加入 extract
         for api_name, request_data in api_info_map.items():
             for headers_key, headers_value in request_data["header"]["header"].items():
                 CaseGenerator.append_extract(
@@ -147,7 +151,7 @@ class CaseGenerator:
                 CaseGenerator.append_extract(request_data, api_info_map, k, v, "form")
 
             for k, v in request_data["request"]["json"].items():
-                CaseGenerator.append_extract(request_data, api_info_map, k, v, "form")
+                CaseGenerator.append_extract(request_data, api_info_map, k, v, "json")
 
             for k, v in request_data["request"]["params"]["params"].items():
                 CaseGenerator.append_extract(request_data, api_info_map, k, v, "params")
