@@ -35,7 +35,10 @@ python3 manage.py createsuperuser
 
 ## 访问项目
 
-```
+```bash
+# 登录管理后台，设置账号姓名
+http://localhost:8081/admin/
+
 浏览器打开:
 http://localhost:8081
 用户/密码:管理员用户/密码
