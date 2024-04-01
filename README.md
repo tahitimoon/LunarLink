@@ -6,6 +6,8 @@
 [![GitHub forks](https://img.shields.io/github/forks/tahitimoon/LunarLink)](https://github.com/tahitimoon/LunarLink/fork)
 [![Python Version](https://img.shields.io/badge/Python-%3E%3D3.9.5-green)](https://python.org/)
 [![Django Version](https://img.shields.io/badge/Django-3.2-blue)](https://docs.djangoproject.com/zh-hans/3.2/)
+[![Static Badge](https://img.shields.io/badge/Node-%3E%3D16.0.0-brightgreen)](https://nodejs.org/en)
+
 
 ## 平台简介
 
