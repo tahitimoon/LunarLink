@@ -1,6 +1,11 @@
 # LunarLink
 
-[![img](https://img.shields.io/badge/Python-%3D3.9.x-green.svg)](https://python.org/) [![PyPI - Django Version badge](https://img.shields.io/badge/django%20versions-3.2-blue)](https://docs.djangoproject.com/zh-hans/3.2/) [![img](https://img.shields.io/badge/node-%3E%3D%2012.0.0-brightgreen)](https://nodejs.org/zh-cn/)
+[![GitHub License](https://img.shields.io/github/license/tahitimoon/LunarLink)](https://github.com/tahitimoon/LunarLink/blob/main/LICENSE)
+[![GitHub Release](https://img.shields.io/github/v/release/tahitimoon/LunarLink)](https://github.com/tahitimoon/LunarLink/releases)
+[![GitHub Repo stars](https://img.shields.io/github/stars/tahitimoon/LunarLink)](https://github.com/tahitimoon/LunarLink/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/tahitimoon/LunarLink)](https://github.com/tahitimoon/LunarLink/fork)
+[![Python Version](https://img.shields.io/badge/Python-%3E%3D3.9.5-green)](https://python.org/)
+[![Django Version](https://img.shields.io/badge/Django-3.2-blue)](https://docs.djangoproject.com/zh-hans/3.2/)
 
 ## 平台简介
 
