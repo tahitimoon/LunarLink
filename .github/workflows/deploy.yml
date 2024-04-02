@@ -1,11 +1,11 @@
 name: Build and Push Docker Images
 
-on:
-  push:
-    branches:
-      - main
 #on:
-#  workflow_dispatch: # 手动触发工作流
+#  push:
+#    branches:
+#      - main
+on:
+  workflow_dispatch: # 手动触发工作流
 
 jobs:
   build-and-push:
@@ -22,7 +22,7 @@ jobs:
       with:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-        registry: ${{ vars.DOCKER_HUB_ADDR }}
+        registry: ${{ secrets.DOCKER_HUB_ADDR }}
 
     - name: Build and push web Docker image
       uses: docker/build-push-action@v2
@@ -30,7 +30,7 @@ jobs:
         context: .
         file: ./deployment/web/Dockerfile
         push: true
-        tags: ${{ vars.DOCKER_HUB_ADDR }}/lunarlink/web:${{ vars.VERSION }}
+        tags: ${{ secrets.DOCKER_HUB_ADDR }}/lunarlink/web:${{ vars.VERSION }}
         platforms: linux/amd64
 
     - name: Build and push django Docker image
@@ -39,7 +39,7 @@ jobs:
         context: .
         file: ./deployment/django/Dockerfile
         push: true
-        tags: ${{ vars.DOCKER_HUB_ADDR }}/lunarlink/django:${{ vars.VERSION }}
+        tags: ${{ secrets.DOCKER_HUB_ADDR }}/lunarlink/django:${{ vars.VERSION }}
         platforms: linux/amd64
 
     - name: Build and push celery Docker image
@@ -48,7 +48,7 @@ jobs:
         context: .
         file: ./deployment/celery/Dockerfile
         push: true
-        tags: ${{ vars.DOCKER_HUB_ADDR }}/lunarlink/celery:${{ vars.VERSION }}
+        tags: ${{ secrets.DOCKER_HUB_ADDR }}/lunarlink/celery:${{ vars.VERSION }}
         platforms: linux/amd64
 
     - name: Build and push proxy Docker image
@@ -57,5 +57,19 @@ jobs:
         context: .
         file: ./deployment/proxy/Dockerfile
         push: true
-        tags: ${{ vars.DOCKER_HUB_ADDR }}/lunarlink/proxy:${{ vars.VERSION }}
+        tags: ${{ secrets.DOCKER_HUB_ADDR }}/lunarlink/proxy:${{ vars.VERSION }}
         platforms: linux/amd64
+
+    - name: SSH and Deploy to Server
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USERNAME }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        port: ${{ secrets.SSH_PORT }} # 如果使用默认端口22，这行可以省略
+        script: |
+          cd tester
+          docker stop $(docker ps -aq)
+          docker rm $(docker ps -aq)
+          docker rmi $(docker images -q)
+          sudo docker-compose up -d
