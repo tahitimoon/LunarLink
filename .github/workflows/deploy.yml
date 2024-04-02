@@ -22,17 +22,13 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
         registry: ${{ vars.DOCKER_HUB_ADDR }}
 
-    - name: Get current date
-      id: date
-      run: echo "::set-output name=version::$(date +%y%m%d)"
-
     - name: Build and push web Docker image
       uses: docker/build-push-action@v2
       with:
         context: .
         file: ./deployment/web/Dockerfile
         push: true
-        tags: ${{ vars.DOCKER_HUB_ADDR }}/lunarlink/web:${{ steps.date.outputs.version }}
+        tags: ${{ vars.DOCKER_HUB_ADDR }}/lunarlink/web:${{ vars.VERSION }}
         platforms: linux/amd64
 
     - name: Build and push django Docker image
@@ -41,7 +37,7 @@ jobs:
         context: .
         file: ./deployment/django/Dockerfile
         push: true
-        tags: ${{ vars.DOCKER_HUB_ADDR }}/lunarlink/django:${{ steps.date.outputs.version }}
+        tags: ${{ vars.DOCKER_HUB_ADDR }}/lunarlink/django:${{ vars.VERSION }}
         platforms: linux/amd64
 
     - name: Build and push celery Docker image
@@ -50,7 +46,7 @@ jobs:
         context: .
         file: ./deployment/celery/Dockerfile
         push: true
-        tags: ${{ vars.DOCKER_HUB_ADDR }}/lunarlink/celery:${{ steps.date.outputs.version }}
+        tags: ${{ vars.DOCKER_HUB_ADDR }}/lunarlink/celery:${{ vars.VERSION }}
         platforms: linux/amd64
 
     - name: Build and push proxy Docker image
@@ -59,5 +55,5 @@ jobs:
         context: .
         file: ./deployment/proxy/Dockerfile
         push: true
-        tags: ${{ vars.DOCKER_HUB_ADDR }}/lunarlink/proxy:${{ steps.date.outputs.version }}
+        tags: ${{ vars.DOCKER_HUB_ADDR }}/lunarlink/proxy:${{ vars.VERSION }}
         platforms: linux/amd64
