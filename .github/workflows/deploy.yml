@@ -22,7 +22,7 @@ jobs:
       with:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-        registry: ${{ vars.DOCKER_HUB_ADDR }}
+        registry: ${{ env.DOCKER_HUB_ADDR }}
 
     - name: Build and push web Docker image
       uses: docker/build-push-action@v2
@@ -30,7 +30,7 @@ jobs:
         context: .
         file: ./deployment/web/Dockerfile
         push: true
-        tags: ${{ vars.DOCKER_HUB_ADDR }}/lunarlink/web:${{ vars.VERSION }}
+        tags: ${{ vars.DOCKER_HUB_ADDR }}/lunarlink/web:${{ env.VERSION }}
         platforms: linux/amd64
 
 #    - name: Build and push django Docker image
@@ -39,7 +39,7 @@ jobs:
 #        context: .
 #        file: ./deployment/django/Dockerfile
 #        push: true
-#        tags: ${{ vars.DOCKER_HUB_ADDR }}/lunarlink/django:${{ vars.VERSION }}
+#        tags: ${{ vars.DOCKER_HUB_ADDR }}/lunarlink/django:${{ env.VERSION }}
 #        platforms: linux/amd64
 #
 #    - name: Build and push celery Docker image
@@ -48,7 +48,7 @@ jobs:
 #        context: .
 #        file: ./deployment/celery/Dockerfile
 #        push: true
-#        tags: ${{ vars.DOCKER_HUB_ADDR }}/lunarlink/celery:${{ vars.VERSION }}
+#        tags: ${{ vars.DOCKER_HUB_ADDR }}/lunarlink/celery:${{ env.VERSION }}
 #        platforms: linux/amd64
 
 #    - name: Build and push proxy Docker image
@@ -57,5 +57,5 @@ jobs:
 #        context: .
 #        file: ./deployment/proxy/Dockerfile
 #        push: true
-#        tags: ${{ vars.DOCKER_HUB_ADDR }}/lunarlink/proxy:${{ vars.VERSION }}
+#        tags: ${{ vars.DOCKER_HUB_ADDR }}/lunarlink/proxy:${{ env.VERSION }}
 #        platforms: linux/amd64
