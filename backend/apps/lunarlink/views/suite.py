@@ -153,7 +153,7 @@ class TestCaseView(GenericViewSet, DestroyModelMixin):
             relation_name: str,
         }
         """
-        project_id = int(request.data.pop("project", None))
+        project_id = int(request.data.pop("project", 0))
         if not models.Project.objects.filter(id=project_id).exists():
             return Response(response.PROJECT_NOT_EXISTS)
 
