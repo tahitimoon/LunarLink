@@ -32,13 +32,11 @@ from backend.settings import BASE_DIR
 from lunarlink import models
 from lunarlink.utils.parser import Format
 from lunarlink.views.report import ConvertRequest
-from httprunner import HttpRunner, parser
+from httprunner import HttpRunner
 from apps.exceptions.error import (
     ApiNotFound,
     ConfigNotFound,
     CaseStepNotFound,
-    FunctionNotFound,
-    VariableNotFound,
 )
 
 logger = logging.getLogger(__name__)
