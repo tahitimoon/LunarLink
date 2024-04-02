@@ -20,7 +20,7 @@ jobs:
       with:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-        registry: registry.cn-shenzhen.aliyuncs.com
+        registry: ${{ vars.DOCKER_HUB_ADDR }}
 
     - name: Get current date
       id: date
@@ -32,7 +32,7 @@ jobs:
         context: .
         file: ./deployment/web/Dockerfile
         push: true
-        tags: registry.cn-shenzhen.aliyuncs.com/lunarlink/web:${{ steps.date.outputs.version }}
+        tags: ${{ vars.DOCKER_HUB_ADDR }}/lunarlink/web:${{ steps.date.outputs.version }}
         platforms: linux/amd64
 
     - name: Build and push django Docker image
@@ -41,7 +41,7 @@ jobs:
         context: .
         file: ./deployment/django/Dockerfile
         push: true
-        tags: registry.cn-shenzhen.aliyuncs.com/lunarlink/django:${{ steps.date.outputs.version }}
+        tags: ${{ vars.DOCKER_HUB_ADDR }}/lunarlink/django:${{ steps.date.outputs.version }}
         platforms: linux/amd64
 
     - name: Build and push celery Docker image
@@ -50,7 +50,7 @@ jobs:
         context: .
         file: ./deployment/celery/Dockerfile
         push: true
-        tags: registry.cn-shenzhen.aliyuncs.com/lunarlink/celery:${{ steps.date.outputs.version }}
+        tags: ${{ vars.DOCKER_HUB_ADDR }}/lunarlink/celery:${{ steps.date.outputs.version }}
         platforms: linux/amd64
 
     - name: Build and push proxy Docker image
@@ -59,5 +59,5 @@ jobs:
         context: .
         file: ./deployment/proxy/Dockerfile
         push: true
-        tags: registry.cn-shenzhen.aliyuncs.com/lunarlink/proxy:${{ steps.date.outputs.version }}
+        tags: ${{ vars.DOCKER_HUB_ADDR }}/lunarlink/proxy:${{ steps.date.outputs.version }}
         platforms: linux/amd64
