@@ -1,9 +1,11 @@
 name: Build and Push Docker Images
 
+#on:
+#  push:
+#    branches:
+#      - main
 on:
-  push:
-    branches:
-      - main  # 或者任何你想要触发此CI/CD流程的分支
+  workflow_dispatch: # 手动触发工作流
 
 jobs:
   build-and-push:
@@ -31,29 +33,29 @@ jobs:
         tags: ${{ vars.DOCKER_HUB_ADDR }}/lunarlink/web:${{ vars.VERSION }}
         platforms: linux/amd64
 
-    - name: Build and push django Docker image
-      uses: docker/build-push-action@v2
-      with:
-        context: .
-        file: ./deployment/django/Dockerfile
-        push: true
-        tags: ${{ vars.DOCKER_HUB_ADDR }}/lunarlink/django:${{ vars.VERSION }}
-        platforms: linux/amd64
+#    - name: Build and push django Docker image
+#      uses: docker/build-push-action@v2
+#      with:
+#        context: .
+#        file: ./deployment/django/Dockerfile
+#        push: true
+#        tags: ${{ vars.DOCKER_HUB_ADDR }}/lunarlink/django:${{ vars.VERSION }}
+#        platforms: linux/amd64
+#
+#    - name: Build and push celery Docker image
+#      uses: docker/build-push-action@v2
+#      with:
+#        context: .
+#        file: ./deployment/celery/Dockerfile
+#        push: true
+#        tags: ${{ vars.DOCKER_HUB_ADDR }}/lunarlink/celery:${{ vars.VERSION }}
+#        platforms: linux/amd64
 
-    - name: Build and push celery Docker image
-      uses: docker/build-push-action@v2
-      with:
-        context: .
-        file: ./deployment/celery/Dockerfile
-        push: true
-        tags: ${{ vars.DOCKER_HUB_ADDR }}/lunarlink/celery:${{ vars.VERSION }}
-        platforms: linux/amd64
-
-    - name: Build and push proxy Docker image
-      uses: docker/build-push-action@v2
-      with:
-        context: .
-        file: ./deployment/proxy/Dockerfile
-        push: true
-        tags: ${{ vars.DOCKER_HUB_ADDR }}/lunarlink/proxy:${{ vars.VERSION }}
-        platforms: linux/amd64
+#    - name: Build and push proxy Docker image
+#      uses: docker/build-push-action@v2
+#      with:
+#        context: .
+#        file: ./deployment/proxy/Dockerfile
+#        push: true
+#        tags: ${{ vars.DOCKER_HUB_ADDR }}/lunarlink/proxy:${{ vars.VERSION }}
+#        platforms: linux/amd64
