@@ -1,6 +1,5 @@
 # LunarLink
-
-[![GitHub License](https://img.shields.io/github/license/tahitimoon/LunarLink)](https://github.com/tahitimoon/LunarLink/blob/main/LICENSE)
+[![GitHub License](https://img.shields.io/github/license/tahitimoon/LunarLink?color=yellow)](https://github.com/tahitimoon/LunarLink/blob/main/LICENSE)
 [![GitHub Release](https://img.shields.io/github/v/release/tahitimoon/LunarLink)](https://github.com/tahitimoon/LunarLink/releases)
 [![GitHub Repo stars](https://img.shields.io/github/stars/tahitimoon/LunarLink)](https://github.com/tahitimoon/LunarLink/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/tahitimoon/LunarLink)](https://github.com/tahitimoon/LunarLink/fork)
