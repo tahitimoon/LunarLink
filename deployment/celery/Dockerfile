@@ -4,8 +4,8 @@ COPY ./backend/requirements.txt requirements.txt
 
 ARG PIP_INDEX_URL="https://pypi.tuna.tsinghua.edu.cn/simple"
 # 安装依赖，尽量减少镜像层并在安装后清理
-RUN sed -i 's/deb.debian.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apt/sources.list && \
-    sed -i 's|security.debian.org/debian-security|mirrors.tuna.tsinghua.edu.cn/debian-security|g' /etc/apt/sources.list && \
+RUN sed -i 's/deb.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list && \
+    sed -i 's|security.debian.org/debian-security|mirrors.aliyun.com/debian-security|g' /etc/apt/sources.list && \
     apt-get update && \
     apt-get install -y --no-install-recommends default-libmysqlclient-dev build-essential libpcre3-dev && \
     pip install --no-cache-dir -r requirements.txt -i ${PIP_INDEX_URL} && \
@@ -18,8 +18,8 @@ RUN sed -i 's/deb.debian.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apt/sources.li
 FROM python:3.9-slim-buster
 
 # 设置时区
-RUN sed -i 's/deb.debian.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apt/sources.list && \
-    sed -i 's|security.debian.org/debian-security|mirrors.tuna.tsinghua.edu.cn/debian-security|g' /etc/apt/sources.list && \
+RUN sed -i 's/deb.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list && \
+    sed -i 's|security.debian.org/debian-security|mirrors.aliyun.com/debian-security|g' /etc/apt/sources.list && \
     apt-get update && \
     apt-get install -y default-libmysqlclient-dev tzdata && \
     echo "Asia/Shanghai" > /etc/timezone && \
