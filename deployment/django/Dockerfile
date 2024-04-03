@@ -2,7 +2,7 @@ FROM python:3.9-slim-buster as Base
 WORKDIR /backend
 COPY ./backend/requirements.txt requirements.txt
 
-ARG PIP_INDEX_URL="https://pypi.tuna.tsinghua.edu.cn/simple"
+ARG PIP_INDEX_URL="https://mirrors.aliyun.com/pypi/simple"
 # 安装依赖，尽量减少镜像层并在安装后清理
 RUN sed -i 's/deb.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list && \
     sed -i 's|security.debian.org/debian-security|mirrors.aliyun.com/debian-security|g' /etc/apt/sources.list && \
