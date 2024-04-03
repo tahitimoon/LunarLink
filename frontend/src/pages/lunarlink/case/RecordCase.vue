@@ -5,7 +5,7 @@
                 <div class="record-api-header">
                     <div style="display: flex; margin-left: 10px">
                         <span class="uniform-text"
-                            >录制接口前, 请先配置好app/web代理~（在线体验已关闭此功能）
+                        >录制接口前, 请先配置好app/web代理~<strong>（在线体验已关闭此功能）</strong>
                             <el-link
                                 class="uniform-text"
                                 type="primary"
