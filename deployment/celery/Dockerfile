@@ -1,40 +1,38 @@
-FROM python:3.9-buster as Base
+FROM python:3.9-slim-buster as Base
 WORKDIR /backend
 COPY ./backend/requirements.txt requirements.txt
-ARG DEBIAN_REPO="deb.debian.org"
+
 ARG PIP_INDEX_URL="https://pypi.tuna.tsinghua.edu.cn/simple"
-RUN echo "deb https://$DEBIAN_REPO/debian/ buster main contrib non-free" > /etc/apt/sources.list && \
-    echo "deb-src https://$DEBIAN_REPO/debian/ buster main contrib non-free" >> /etc/apt/sources.list && \
-    echo "deb https://$DEBIAN_REPO/debian-security buster/updates main contrib non-free" >> /etc/apt/sources.list && \
-    echo "deb-src https://$DEBIAN_REPO/debian-security buster/updates main contrib non-free" >> /etc/apt/sources.list && \
-    echo "deb https://$DEBIAN_REPO/debian/ buster-updates main contrib non-free" >> /etc/apt/sources.list && \
-    echo "deb-src https://$DEBIAN_REPO/debian/ buster-updates main contrib non-free" >> /etc/apt/sources.list
-RUN apt-get update && \
-    apt-get install -y default-libmysqlclient-dev python3-dev build-essential netcat-openbsd libpcre3-dev && \
-    pip install setuptools==57.5.0 -i ${PIP_INDEX_URL} && \
-    pip install -r requirements.txt -i ${PIP_INDEX_URL} && \
+# 安装依赖，尽量减少镜像层并在安装后清理
+RUN sed -i 's/deb.debian.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apt/sources.list && \
+    sed -i 's|security.debian.org/debian-security|mirrors.tuna.tsinghua.edu.cn/debian-security|g' /etc/apt/sources.list && \
+    apt-get update && \
+    apt-get install -y --no-install-recommends default-libmysqlclient-dev build-essential libpcre3-dev && \
+    pip install --no-cache-dir -r requirements.txt -i ${PIP_INDEX_URL} && \
     apt-get remove -y python3-dev build-essential libpcre3-dev && \
     apt-get autoremove -y && \
+    apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-FROM python:3.9-buster
-ARG DEBIAN_REPO="deb.debian.org"
-RUN echo "deb https://$DEBIAN_REPO/debian/ buster main contrib non-free" > /etc/apt/sources.list && \
-    echo "deb-src https://$DEBIAN_REPO/debian/ buster main contrib non-free" >> /etc/apt/sources.list && \
-    echo "deb https://$DEBIAN_REPO/debian-security buster/updates main contrib non-free" >> /etc/apt/sources.list && \
-    echo "deb-src https://$DEBIAN_REPO/debian-security buster/updates main contrib non-free" >> /etc/apt/sources.list && \
-    echo "deb https://$DEBIAN_REPO/debian/ buster-updates main contrib non-free" >> /etc/apt/sources.list && \
-    echo "deb-src https://$DEBIAN_REPO/debian/ buster-updates main contrib non-free" >> /etc/apt/sources.list
+# 第二阶段开始
+FROM python:3.9-slim-buster
 
-RUN apt-get update && \
+# 设置时区
+RUN sed -i 's/deb.debian.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apt/sources.list && \
+    sed -i 's|security.debian.org/debian-security|mirrors.tuna.tsinghua.edu.cn/debian-security|g' /etc/apt/sources.list && \
+    apt-get update && \
     apt-get install -y default-libmysqlclient-dev tzdata && \
     echo "Asia/Shanghai" > /etc/timezone && \
     ln -snf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
     dpkg-reconfigure -f noninteractive tzdata && \
+    apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
+# 从构建阶段复制安装的包
 COPY --from=Base /usr/local/lib/python3.9/site-packages /usr/local/lib/python3.9/site-packages
 COPY --from=Base /usr/local/bin /usr/local/bin
+
+# 复制应用代码
 WORKDIR /backend
 COPY ./backend .
 COPY ./backend/conf/docker.py conf/env.py
