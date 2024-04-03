@@ -68,7 +68,8 @@ jobs:
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         script: |
           cd ${{ secrets.SSH_DIR }}
-          docker stop $(docker ps -aq)
-          docker rm $(docker ps -aq)
-          docker rmi $(docker images -q)
-          sudo docker-compose up -d
+          mkdir docs
+#          docker stop $(docker ps -aq)
+#          docker rm $(docker ps -aq)
+#          docker rmi $(docker images -q)
+#          sudo docker-compose up -d
