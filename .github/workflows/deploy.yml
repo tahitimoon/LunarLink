@@ -50,7 +50,7 @@ jobs:
 #        push: true
 #        tags: ${{ secrets.DOCKER_HUB_ADDR }}/lunarlink/celery:${{ vars.VERSION }}
 #        platforms: linux/amd64
-#
+
 #    - name: Build and push proxy Docker image
 #      uses: docker/build-push-action@v5
 #      with:
@@ -67,9 +67,8 @@ jobs:
         username: ${{ secrets.SSH_USERNAME }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         script: |
-          cd tester
-          mkdir docs
-#          docker stop $(docker ps -aq)
-#          docker rm $(docker ps -aq)
-#          docker rmi $(docker images -q)
-#          sudo docker-compose up -d
+          cd ${{ secrets.SSH_DIR }}
+          docker stop $(docker ps -aq)
+          docker rm $(docker ps -aq)
+          docker rmi $(docker images -q)
+          sudo docker-compose up -d
