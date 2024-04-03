@@ -250,6 +250,7 @@
                                 <div
                                     @drop="drop($event)"
                                     @dragover="allowDrop($event)"
+                                    class="drag-drop-zone"
                                 >
                                     <div>
                                         <span
@@ -1186,5 +1187,9 @@ export default {
     bottom: 0;
     left: 0;
     right: 0;
+}
+
+.drag-drop-zone {
+    min-height: 200px;
 }
 </style>
