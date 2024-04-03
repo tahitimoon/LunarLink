@@ -24,41 +24,41 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
         registry: ${{ secrets.DOCKER_HUB_ADDR }}
 
-#    - name: Build and push web Docker image
-#      uses: docker/build-push-action@v5
-#      with:
-#        context: .
-#        file: ./deployment/web/Dockerfile
-#        push: true
-#        tags: ${{ secrets.DOCKER_HUB_ADDR }}/lunarlink/web:${{ vars.VERSION }}
-#        platforms: linux/amd64
-#
-#    - name: Build and push django Docker image
-#      uses: docker/build-push-action@v5
-#      with:
-#        context: .
-#        file: ./deployment/django/Dockerfile
-#        push: true
-#        tags: ${{ secrets.DOCKER_HUB_ADDR }}/lunarlink/django:${{ vars.VERSION }}
-#        platforms: linux/amd64
-#
-#    - name: Build and push celery Docker image
-#      uses: docker/build-push-action@v5
-#      with:
-#        context: .
-#        file: ./deployment/celery/Dockerfile
-#        push: true
-#        tags: ${{ secrets.DOCKER_HUB_ADDR }}/lunarlink/celery:${{ vars.VERSION }}
-#        platforms: linux/amd64
+    - name: Build and push web Docker image
+      uses: docker/build-push-action@v5
+      with:
+        context: .
+        file: ./deployment/web/Dockerfile
+        push: true
+        tags: ${{ secrets.DOCKER_HUB_ADDR }}/${{ secrets.DOCKER_NAMESPACE }}/web:${{ vars.VERSION }}
+        platforms: linux/amd64
 
-#    - name: Build and push proxy Docker image
-#      uses: docker/build-push-action@v5
-#      with:
-#        context: .
-#        file: ./deployment/proxy/Dockerfile
-#        push: true
-#        tags: ${{ secrets.DOCKER_HUB_ADDR }}/lunarlink/proxy:${{ vars.VERSION }}
-#        platforms: linux/amd64
+    - name: Build and push django Docker image
+      uses: docker/build-push-action@v5
+      with:
+        context: .
+        file: ./deployment/django/Dockerfile
+        push: true
+        tags: ${{ secrets.DOCKER_HUB_ADDR }}/${{ secrets.DOCKER_NAMESPACE }}/django:${{ vars.VERSION }}
+        platforms: linux/amd64
+
+    - name: Build and push celery Docker image
+      uses: docker/build-push-action@v5
+      with:
+        context: .
+        file: ./deployment/celery/Dockerfile
+        push: true
+        tags: ${{ secrets.DOCKER_HUB_ADDR }}/${{ secrets.DOCKER_NAMESPACE }}/celery:${{ vars.VERSION }}
+        platforms: linux/amd64
+
+    - name: Build and push proxy Docker image
+      uses: docker/build-push-action@v5
+      with:
+        context: .
+        file: ./deployment/proxy/Dockerfile
+        push: true
+        tags: ${{ secrets.DOCKER_HUB_ADDR }}/${{ secrets.DOCKER_NAMESPACE }}/proxy:${{ vars.VERSION }}
+        platforms: linux/amd64
 
     - name: SSH and Deploy to Server
       uses: appleboy/ssh-action@master
@@ -68,8 +68,7 @@ jobs:
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         script: |
           cd ${{ secrets.SSH_DIR }}
-          mkdir docs
-#          docker stop $(docker ps -aq)
-#          docker rm $(docker ps -aq)
-#          docker rmi $(docker images -q)
-#          sudo docker-compose up -d
+          docker stop $(docker ps -aq)
+          docker rm $(docker ps -aq)
+          docker rmi $(docker images -q)
+          sudo docker compose up -d
