@@ -427,7 +427,7 @@ class CaseGenerator:
         """
         url_parts = url.split("?")
         base_url = url_parts[0]
-        query_params = url_parts[1].split("&") if len(url_parts) > 1 else []
+        query_params = [param for param in url_parts[1].split("&") if param] if len(url_parts) > 1 else []
         protocol, path_with_domain = base_url.split("//")
         return protocol, path_with_domain, query_params
 
