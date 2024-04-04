@@ -3,7 +3,7 @@
 ./backend/.venv/
 ./backend/venv/
 ./backend/env/
-./backend/.env.dev
+./backend/.env
 
 # frontend
 ./frontend/dist/
