@@ -10,14 +10,13 @@
 import json
 from typing import TypeVar
 
-import pydantic
+from pydantic import BaseModel
 from loguru import logger
-
 
 body = TypeVar("body", bytes, str)
 
 
-class RequestInfo(pydantic.BaseModel):
+class RequestInfo(BaseModel):
     url: str
     body: str
     request_method: str
@@ -87,4 +86,8 @@ class RequestInfo(pydantic.BaseModel):
         return request.data.decode("utf-8")
 
     def dumps(self):
-        return json.dumps(self.dict(), ensure_ascii=False)
+        try:
+            return self.json(ensure_ascii=False)
+        except Exception as e:
+            logger.error(f"序列化错误: {e}")
+            return None
