@@ -24,6 +24,14 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
         registry: ${{ secrets.DOCKER_HUB_ADDR }}
 
+    - name: Cache Docker layers
+      uses: actions/cache@v4
+      with:
+        path: /tmp/.buildx-cache
+        key: ${{ runner.os }}-buildx-${{ github.sha }}
+        restore-keys: |
+          ${{ runner.os }}-buildx-
+
     - name: Build and push web Docker image
       uses: docker/build-push-action@v5
       with:
@@ -32,6 +40,8 @@ jobs:
         push: true
         tags: ${{ secrets.DOCKER_HUB_ADDR }}/${{ secrets.DOCKER_NAMESPACE }}/web:${{ vars.VERSION }}
         platforms: linux/amd64
+        cache-from: type=local,src=/tmp/.buildx-cache
+        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
 
     - name: Build and push django Docker image
       uses: docker/build-push-action@v5
@@ -41,6 +51,8 @@ jobs:
         push: true
         tags: ${{ secrets.DOCKER_HUB_ADDR }}/${{ secrets.DOCKER_NAMESPACE }}/django:${{ vars.VERSION }}
         platforms: linux/amd64
+        cache-from: type=local,src=/tmp/.buildx-cache
+        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
 
     - name: Build and push celery Docker image
       uses: docker/build-push-action@v5
@@ -50,6 +62,8 @@ jobs:
         push: true
         tags: ${{ secrets.DOCKER_HUB_ADDR }}/${{ secrets.DOCKER_NAMESPACE }}/celery:${{ vars.VERSION }}
         platforms: linux/amd64
+        cache-from: type=local,src=/tmp/.buildx-cache
+        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
 
     - name: Build and push proxy Docker image
       uses: docker/build-push-action@v5
@@ -59,6 +73,13 @@ jobs:
         push: true
         tags: ${{ secrets.DOCKER_HUB_ADDR }}/${{ secrets.DOCKER_NAMESPACE }}/proxy:${{ vars.VERSION }}
         platforms: linux/amd64
+        cache-from: type=local,src=/tmp/.buildx-cache
+        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
+
+    - name: Move cache
+      run: |
+        rm -rf /tmp/.buildx-cache
+        mv /tmp/.buildx-cache-new /tmp/.buildx-cache
 
     - name: SSH and Deploy to Server
       uses: appleboy/ssh-action@master
