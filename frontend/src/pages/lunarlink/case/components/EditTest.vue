@@ -1190,6 +1190,6 @@ export default {
 }
 
 .drag-drop-zone {
-    min-height: 200px;
+    min-height: 600px;
 }
 </style>
