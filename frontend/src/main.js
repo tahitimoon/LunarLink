@@ -54,10 +54,18 @@ Vue.prototype.getLocalValue = function(name) {
 };
 
 router.beforeEach((to, from, next) => {
+    // 延迟确保在路由变化后再更新状态，避免潜在的时序问题
     setTimeout(() => {
         // 修改页面title
         if (to.meta.title) {
             document.title = to.meta.title;
+        }
+
+        // 更新侧边栏状态
+        if (to.name) {
+            store.commit("setRouterName", to.name);
+            // 如果需要，也可以更新LocalStorage
+            Vue.prototype.setLocalValue("routerName", to.name);
         }
 
         // 鉴权
