@@ -19,6 +19,7 @@ import json5
 import requests
 
 from lunarlink import models
+from lunaruser import models as user_models
 from lunarlink.utils.tree import (
     get_all_ycatid,
     get_tree_max_id,
@@ -822,6 +823,8 @@ class Yapi:
         ]
         proj = models.Project.objects.get(id=self.faster_project_id)
         obj = models.Relation.objects.get(project_id=self.faster_project_id, type=1)
+        yapi_user = user_models.MyUser.objects.filter(name="yapi").first()
+        yapi_user_id = yapi_user.id if yapi_user else None
         eval_tree: List = literal_eval(obj.tree)
         tree_ycatid_mapping = get_tree_ycatid_mapping(value=eval_tree)
         api_instances = []
@@ -843,7 +846,7 @@ class Yapi:
                 "yapi_up_time": api["yapi_up_time"],
                 "yapi_username": api["yapi_username"],
                 # 默认为yapi用户
-                "creator": "yapi",
+                "creator_id": yapi_user_id,
             }
             api_instances.append(models.API(**api_body))
 

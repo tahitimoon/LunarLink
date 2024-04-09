@@ -64,7 +64,8 @@ def async_import_yapi_api(yapi_base_url, yapi_token, project_id):
         faster_project_id=project_id,
     )
     apis_imported_from_yapi = models.API.objects.filter(
-        project_id=project_id, creator="yapi"
+        project_id=project_id,
+        creator__name="yapi",
     )
     imported_apis_mapping = {
         api.yapi_id: api.yapi_up_time for api in apis_imported_from_yapi
@@ -306,7 +307,9 @@ def send_notifications(args, kwargs, summary, task_name, report_id):
     :return:
     """
     strategy = kwargs.get("strategy")
-    if strategy == "始终发送" or (strategy == "仅失败发送" and summary["stat"]["failures"] > 0):
+    if strategy == "始终发送" or (
+        strategy == "仅失败发送" and summary["stat"]["failures"] > 0
+    ):
         summary.update({"task_name": task_name, "report_id": report_id})
         webhook = kwargs.get("webhook", "")
         email_recipient = kwargs.get("receiver", "")
