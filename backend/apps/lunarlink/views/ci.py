@@ -31,7 +31,6 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.viewsets import GenericViewSet
 from lunarlink.serializers import CISerializer, CIReportSerializer
-from lunarlink.utils.host import parse_host
 from lunarlink.utils.loader import save_summary
 from lunarlink.utils import response
 
@@ -240,7 +239,7 @@ class CIView(GenericViewSet):
                     for case_step in case_step_list:
                         body = literal_eval(case_step["body"])
                         if body["request"].get("url"):
-                            testcase_list.append(parse_host(ip=host, api=body))
+                            testcase_list.append(body)
                         elif config is None and body["request"].get("base_url"):
                             # 当前步骤时配置
                             # 如果task中存在重载配置，就覆盖用例中的配置
@@ -255,7 +254,7 @@ class CIView(GenericViewSet):
                                     )
                                 except ObjectDoesNotExist:
                                     return Response(response.CONFIG_NOT_EXISTS)
-                    config_list.append(parse_host(ip=host, api=config))
+                    config_list.append(config)
                     test_sets.append(testcase_list)
                     config = None
                 suite_list.extend(suite)
