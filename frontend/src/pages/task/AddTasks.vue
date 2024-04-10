@@ -313,6 +313,7 @@
                                 <div
                                     @drop="drop($event)"
                                     @dragover="allowDrop($event)"
+                                    class="drag-drop-zone"
                                 >
                                     <span
                                         v-if="testData.length === 0"
@@ -700,5 +701,9 @@ export default {
     bottom: 0;
     left: 0;
     right: 0;
+}
+
+.drag-drop-zone {
+    min-height: 600px;
 }
 </style>
