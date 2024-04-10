@@ -76,7 +76,6 @@ def run_api_pk(request, pk):
 def run_api(request):
     """run api by body"""
 
-    host = request.data.pop("host", "请选择")
     config_name = request.data.pop("config", "请选择")
 
     api = Format(request.data)
@@ -94,17 +93,11 @@ def run_api(request):
             logger.error(f"指定配置文件不存在:{config_name}")
             return Response(config_err)
 
-    if host != "请选择":
-        host = models.HostIP.objects.get(
-            name=host, project__id=api.project
-        ).value.splitlines()
-        api.testcase = parse_host(host, api.testcase)
-
     summary = loader.debug_api(
         api=api.testcase,
         project=api.project,
         name=api.name,
-        config=parse_host(ip=host, api=config),
+        config=config,
         user=request.user.id,
     )
 

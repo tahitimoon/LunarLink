@@ -241,9 +241,6 @@ export default {
         Report
     },
     props: {
-        host: {
-            required: false
-        },
         nodeId: {
             required: false
         },
@@ -551,7 +548,6 @@ export default {
                                 times: this.times,
                                 project: this.project,
                                 config: this.config.name,
-                                host: this.host
                             },
                             this.cancelTokenSource.token
                         )
