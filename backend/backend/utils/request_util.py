@@ -101,6 +101,13 @@ def save_login_log(request):
     :return:
     """
     ip = get_request_ip(request=request)
+
+    # 过滤掉平台自身的服务器 IP 地址
+    platform_ips = ["127.0.0.1", "47.119.28.171"]
+    # 如果请求来自平台自身的 IP，跳过记录日志
+    if ip in platform_ips:
+        return
+
     analysis_data = get_ip_analysis(ip=ip)
     analysis_data.update(
         {
