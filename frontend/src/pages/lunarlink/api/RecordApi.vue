@@ -288,7 +288,6 @@
                     :project="$route.params.id"
                     :response="response"
                     :config="currentConfig"
-                    :host="currentHost"
                     @addSuccess="handleAddSuccess"
                     @refreshTree="getTree"
                     @otherContentChanged="handleOtherContentChange"
@@ -304,7 +303,6 @@
                     :p-node="currentNode !== '' ? currentNode.id : ''"
                     :project="$route.params.id"
                     :config="currentConfig"
-                    :host="currentHost"
                     :del="del"
                     :back="back"
                     :move.sync="move"
@@ -436,7 +434,6 @@ export default {
             configOptions: [],
             hostOptions: [],
             currentConfig: "",
-            currentHost: "请选择",
             back: false,
             del: false,
             move: false,

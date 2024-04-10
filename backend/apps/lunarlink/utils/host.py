@@ -22,6 +22,7 @@ def parse_host(ip, api):
     """
     if not isinstance(ip, list):
         return api
+
     if not api:
         return api
 

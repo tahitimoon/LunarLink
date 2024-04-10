@@ -46,7 +46,6 @@ def run_api_pk(request, pk):
     """
     运行单个接口
     """
-    host = request.query_params.get("host", "请选择")
     config_name = request.query_params.get("config", "请选择")
     try:
         api = models.API.objects.get(id=pk)
@@ -61,18 +60,11 @@ def run_api_pk(request, pk):
         )
     )
 
-    test_case = literal_eval(api.body)
-    if host != "请选择":
-        host = models.HostIP.objects.get(
-            name=host, project=api.project
-        ).value.splitlines()
-        test_case = parse_host(ip=host, api=test_case)
-
     summary = loader.debug_api(
-        api=test_case,
+        api=literal_eval(api.body),
         project=api.project.id,
         name=api.name,
-        config=parse_host(ip=host, api=config),
+        config=config,
         user=request.user.id,
     )
 

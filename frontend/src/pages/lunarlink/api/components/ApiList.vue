@@ -472,9 +472,6 @@ export default {
         Report
     },
     props: {
-        host: {
-            required: false
-        },
         config: {
             required: false
         },
@@ -944,7 +941,6 @@ export default {
                     .runAPIByPk(
                         id,
                         {
-                            host: this.host,
                             config: this.config.name
                         },
                         this.cancelTokenSource.token
