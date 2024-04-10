@@ -42,16 +42,16 @@ export const timestamp2time = function(timestamp) {
     const M = (month < 10 ? "0" + month : month) + "-";
 
     const days = date.getDate();
-    const D = (days + 1 < 10 ? "0" + days : days) + " ";
+    const D = (days < 10 ? "0" + days : days) + " ";
 
     const hours = date.getHours();
-    const h = (hours + 1 < 10 ? "0" + hours : hours) + ":";
+    const h = (hours < 10 ? "0" + hours : hours) + ":";
 
     const minutes = date.getMinutes();
-    const m = (minutes + 1 < 10 ? "0" + minutes : minutes) + ":";
+    const m = (minutes < 10 ? "0" + minutes : minutes) + ":";
 
     const seconds = date.getSeconds();
-    const s = seconds + 1 < 10 ? "0" + seconds : seconds;
+    const s = seconds < 10 ? "0" + seconds : seconds;
 
     return Y + M + D + h + m + s;
 };
