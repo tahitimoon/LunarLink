@@ -364,14 +364,6 @@ class VariablesSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
-class HostIPSerializer(serializers.ModelSerializer):
-    """主机信息序列化"""
-
-    class Meta:
-        model = models.HostIP
-        fields = "__all__"
-
-
 class ReportSerializer(serializers.ModelSerializer):
     """报告信息序列化"""
 
@@ -500,14 +492,18 @@ class ScheduleDeSerializer(serializers.Serializer):
         allow_blank=True,
         help_text="Gitlab的项目id，多个用逗号分开，一个项目id对应多个task，但只能在同一个项目中",
     )
-    strategy = serializers.CharField(required=True, help_text="发送通知策略", max_length=20)
+    strategy = serializers.CharField(
+        required=True, help_text="发送通知策略", max_length=20
+    )
     receiver = serializers.CharField(
         required=True, help_text="邮件接收者列表", allow_blank=True, max_length=100
     )
     mail_cc = serializers.CharField(
         required=True, help_text="邮件抄送列表", allow_blank=True, max_length=100
     )
-    name = serializers.CharField(required=True, help_text="定时任务名称", max_length=100)
+    name = serializers.CharField(
+        required=True, help_text="定时任务名称", max_length=100
+    )
     webhook = serializers.CharField(
         required=True,
         help_text="飞书/企微/钉钉webhook url",

@@ -121,7 +121,6 @@ def delete_related_objects(sender, instance, **kwargs):
             Config,
             API,
             Case,
-            HostIP,
             Variables,
             Report,
             Debugtalk,
@@ -283,20 +282,6 @@ class CaseStep(BaseTable):
     source_api_id = models.IntegerField(verbose_name="api来源", null=False)
 
 
-class HostIP(BaseTable):
-    """Host配置"""
-
-    class Meta:
-        verbose_name = "HOST配置"
-        db_table = "host_ip"
-
-    name = models.CharField(verbose_name="host名称", null=False, max_length=100)
-    value = models.TextField(verbose_name="值", null=False)
-    project = models.ForeignKey(
-        to=Project, on_delete=models.CASCADE, db_constraint=False
-    )
-
-
 class Variables(BaseTable):
     """
     全局变量
@@ -311,7 +296,9 @@ class Variables(BaseTable):
     project = models.ForeignKey(
         to=Project, on_delete=models.CASCADE, db_constraint=False
     )
-    description = models.CharField(verbose_name="全局变量描述", null=True, max_length=100)
+    description = models.CharField(
+        verbose_name="全局变量描述", null=True, max_length=100
+    )
 
 
 class Debugtalk(BaseTable):
@@ -452,7 +439,9 @@ class Visit(models.Model):
     class Meta:
         db_table = "visit"
 
-    user = models.CharField(verbose_name="访问url的用户名", max_length=100, db_index=True)
+    user = models.CharField(
+        verbose_name="访问url的用户名", max_length=100, db_index=True
+    )
     ip = models.CharField(verbose_name="用户的ip", max_length=20, db_index=True)
     project = models.CharField(
         verbose_name="项目id", max_length=4, db_index=True, default=0

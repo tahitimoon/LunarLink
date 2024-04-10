@@ -26,11 +26,19 @@ class StandResponse(ErrorMsg, GenericModel, Generic[GenericResultsType]):
     data: GenericResultsType
 
 
-RECORD_START_SUCCESS = {"code": "0001", "success": True, "msg": "开始录制，可以在浏览器/app上操作啦！"}
+RECORD_START_SUCCESS = {
+    "code": "0001",
+    "success": True,
+    "msg": "开始录制，可以在浏览器/app上操作啦！",
+}
 
 RECORD_IS_RUNNING = {"code": "0005", "success": False, "msg": "此IP正在录制中"}
 
-RECORD_STOP_SUCCESS = {"code": "0002", "success": True, "msg": "停止成功，快去生成用例吧~"}
+RECORD_STOP_SUCCESS = {
+    "code": "0002",
+    "success": True,
+    "msg": "停止成功，快去生成用例吧~",
+}
 
 RECORD_REMOVE_SUCCESS = {"code": "0003", "success": True, "msg": "删除成功"}
 
@@ -48,17 +56,29 @@ API_DEL_SUCCESS = {"code": "0003", "success": True, "msg": "接口删除成功"}
 
 CASE_ADD_SUCCESS = {"code": "0001", "success": True, "msg": "用例添加成功"}
 
-CASE_GENERATOR_SUCCESS = {"code": "0001", "success": True, "msg": "用例生成成功, 快去列表查看吧~"}
+CASE_GENERATOR_SUCCESS = {
+    "code": "0001",
+    "success": True,
+    "msg": "用例生成成功, 快去列表查看吧~",
+}
 
 CASE_UPDATE_SUCCESS = {"code": "0002", "success": True, "msg": "用例修改成功"}
 
 TAG_UPDATE_SUCCESS = {"code": "0002", "success": True, "msg": "用例标记成功"}
 
-CASE_EXISTS = {"code": "0101", "success": False, "msg": "此节点下已存在该用例, 请重新命名"}
+CASE_EXISTS = {
+    "code": "0101",
+    "success": False,
+    "msg": "此节点下已存在该用例, 请重新命名",
+}
 
 CASE_NOT_EXISTS = {"code": "0102", "success": False, "msg": "此用例不存在"}
 
-CASE_IS_USED = {"code": "0104", "success": False, "msg": "用例被定时任务使用中, 无法删除"}
+CASE_IS_USED = {
+    "code": "0104",
+    "success": False,
+    "msg": "用例被定时任务使用中, 无法删除",
+}
 
 CASE_SPILT_SUCCESS = {"code": "0001", "success": True, "msg": "用例切割成功"}
 
@@ -76,7 +96,11 @@ CONFIG_UPDATE_SUCCESS = {"code": "0002", "success": True, "msg": "配置修改�
 
 CONFIG_DEL_SUCCESS = {"code": "0003", "success": True, "msg": "配置删除成功"}
 
-CONFIG_IS_USED = {"code": "0104", "success": False, "msg": "配置文件被用例使用中, 无法删除"}
+CONFIG_IS_USED = {
+    "code": "0104",
+    "success": False,
+    "msg": "配置文件被用例使用中, 无法删除",
+}
 
 DEBUGTALK_NOT_EXISTS = {"code": "0102", "success": False, "msg": "debugtalk不存在"}
 
@@ -84,7 +108,6 @@ DEBUGTALK_UPDATE_SUCCESS = {"code": "0002", "success": True, "msg": "debugtalk�
 
 DATA_TO_LONG = {"code": "0100", "success": False, "msg": "数据信息过长"}
 
-HOSTIP_NOT_EXISTS = {"code": "0102", "success": False, "msg": "指定的域名不存在"}
 
 REPORT_DEL_SUCCESS = {"code": "0003", "success": True, "msg": "报告删除成功"}
 
@@ -118,17 +141,29 @@ TASK_ADD_SUCCESS = {"code": "0001", "success": True, "msg": "任务新增成功"
 
 TASK_ADD_FAILURE = {"code": "0101", "success": False, "msg": "任务新增失败"}
 
-TASK_COPY_FAILURE = {"code": "0103", "success": False, "msg": "任务复制失败, 任务名已存在"}
+TASK_COPY_FAILURE = {
+    "code": "0103",
+    "success": False,
+    "msg": "任务复制失败, 任务名已存在",
+}
 
 TASK_COPY_SUCCESS = {"code": "0003", "success": True, "msg": "任务复制成功"}
 
 TASK_DEL_SUCCESS = {"code": "0003", "success": True, "msg": "任务删除成功"}
 
-TASK_RUN_SUCCESS = {"code": "0001", "success": True, "msg": "用例运行中, 请稍后查看报告"}
+TASK_RUN_SUCCESS = {
+    "code": "0001",
+    "success": True,
+    "msg": "用例运行中, 请稍后查看报告",
+}
 
 TASK_TIME_ILLEGAL = {"code": "0101", "success": False, "msg": "时间表达式非法"}
 
-TASK_HAS_EXISTS = {"code": "0102", "success": False, "msg": "无法添加, 该任务名称已被使用"}
+TASK_HAS_EXISTS = {
+    "code": "0102",
+    "success": False,
+    "msg": "无法添加, 该任务名称已被使用",
+}
 
 TASK_NOT_EXISTS = {"code": "0102", "success": False, "msg": "指定的任务不存在"}
 
@@ -156,7 +191,11 @@ VARIABLES_NOT_EXISTS = {"code": "0102", "success": False, "msg": "指定的全�
 
 YAPI_ADD_SUCCESS = {"code": "0001", "success": True, "msg": "导入YAPI接口添加成功"}
 
-IMPORT_YAPI = {"code": "0001", "success": True, "msg": "如果是首次导入，可能时间稍长，请耐心等待~"}
+IMPORT_YAPI = {
+    "code": "0001",
+    "success": True,
+    "msg": "如果是首次导入，可能时间稍长，请耐心等待~",
+}
 
 YAPI_ADD_FAILED = {"code": "0103", "success": False, "msg": "导入YAPI接口失败"}
 

@@ -192,7 +192,6 @@ class CIView(GenericViewSet):
             test_sets = []
             suite_list = []
             config_list = []
-            host = "请选择"
             config = None
             webhook_set = set()
             override_config_body = None
