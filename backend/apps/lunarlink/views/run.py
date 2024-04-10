@@ -122,13 +122,6 @@ def run_api(request):
             required=True,
         ),
         openapi.Parameter(
-            "host",
-            openapi.IN_QUERY,
-            description="host",
-            type=openapi.TYPE_STRING,
-            required=True,
-        ),
-        openapi.Parameter(
             "async",
             openapi.IN_QUERY,
             description="async",
@@ -150,22 +143,15 @@ def run_testsuite_pk(request, **kwargs):
     """
 
     pk = kwargs.get("pk")
-
-    test_list = (
-        models.CaseStep.objects.filter(case__id=pk).order_by("step").values("body")
-    )
-
     project = request.query_params["project"]
     name = request.query_params["name"]
-    host = request.query_params["host"]
     back_async = request.query_params.get("async", False)
 
     test_case = []
     config = None
-
-    if host != "请选择":
-        host = models.HostIP.objects.get(name=host, project=project).value.splitlines()
-
+    test_list = (
+        models.CaseStep.objects.filter(case__id=pk).order_by("step").values("body")
+    )
     for content in test_list:
         body = literal_eval(content["body"])
         if "base_url" in body["request"].keys():
@@ -180,7 +166,7 @@ def run_testsuite_pk(request, **kwargs):
             else:
                 continue
 
-        test_case.append(parse_host(ip=host, api=body))
+        test_case.append(body)
 
     # 异步执行
     if back_async:
@@ -188,7 +174,7 @@ def run_testsuite_pk(request, **kwargs):
             api=test_case,
             project=project,
             name=name,
-            config=parse_host(ip=host, api=config),
+            config=config,
             user=request.user.id,
         )
         summary = response.TASK_RUN_SUCCESS
@@ -197,7 +183,7 @@ def run_testsuite_pk(request, **kwargs):
             api=test_case,
             project=project,
             name=name,
-            config=parse_host(ip=host, api=config),
+            config=config,
             user=request.user.id,
         )
 

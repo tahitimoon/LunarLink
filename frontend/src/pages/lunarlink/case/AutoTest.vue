@@ -192,7 +192,6 @@
                     :node="currentNode.id"
                     :testStepResp="testStepResp"
                     :config="currentConfig"
-                    :host="currentHost"
                     :rigEnv.sync="rigEnv"
                     :tag.sync="tag"
                     :search.sync="search"
@@ -213,7 +212,6 @@
                     :back="back"
                     :run="run"
                     :move="move"
-                    :host="currentHost"
                     :isSelectCase.sync="isSelectCase"
                     :pageSize.sync="pageSize"
                     :currentPage.sync="currentPage"
@@ -259,7 +257,6 @@ export default {
                     }
                 ]
             },
-            hostOptions: [],
             back: false,
             editBack: false,
             resetEditTestStepActivate: false,
@@ -269,7 +266,6 @@ export default {
             radio: "根目录",
             addTestActivate: true,
             currentConfig: "",
-            currentHost: "请选择",
             treeId: "",
             maxId: "",
             dialogVisible: false,

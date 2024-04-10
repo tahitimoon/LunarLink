@@ -404,7 +404,6 @@
                 </div>
                 <test-body
                     v-if="editTestStepActivate"
-                    :host="host"
                     :response="testData[currentTest]"
                     :config="config"
                     :disabledSave="disabledSave"
@@ -438,9 +437,6 @@ export default {
         Report
     },
     props: {
-        host: {
-            required: true
-        },
         config: {
             required: true
         },
@@ -696,7 +692,6 @@ export default {
                 this.$api
                     .runSingleTestSuite(
                         {
-                            host: this.host,
                             name: this.testName,
                             body: this.testData,
                             project: this.project
@@ -729,7 +724,6 @@ export default {
                 this.$api
                     .runSingleTestSuite(
                         {
-                            host: this.host,
                             name: this.testName,
                             body: this.testData.slice(0, index + 1),
                             project: this.project
@@ -777,7 +771,6 @@ export default {
             this.$api
                 .runSingleTest(
                     {
-                        host: this.host,
                         config: config,
                         body: this.testData[this.currentTest],
                         project: this.project

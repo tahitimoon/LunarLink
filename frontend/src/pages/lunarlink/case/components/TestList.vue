@@ -657,9 +657,6 @@ export default {
         project: {
             required: true
         },
-        host: {
-            required: true
-        },
         pNode: {
             required: false
         },
@@ -870,7 +867,6 @@ export default {
             } else {
                 this.$api
                     .runSuiteTree({
-                        host: this.host,
                         project: this.project,
                         relation: relation,
                         async: this.async_,
@@ -946,7 +942,6 @@ export default {
                     {
                         project: this.project,
                         name: name,
-                        host: this.host
                     },
                     this.cancelTokenSource.token
                 )
@@ -983,7 +978,6 @@ export default {
                     params: {
                         project: this.project,
                         name: name,
-                        host: this.host,
                         async: true
                     }
                 })

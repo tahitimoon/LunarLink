@@ -191,9 +191,6 @@ export default {
         response: {
             required: true
         },
-        host: {
-            required: true
-        },
         disabledSave: {
             type: Boolean,
             required: true

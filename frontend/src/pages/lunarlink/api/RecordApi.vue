@@ -432,7 +432,6 @@ export default {
                 responsible: ""
             },
             configOptions: [],
-            hostOptions: [],
             currentConfig: "",
             back: false,
             del: false,
