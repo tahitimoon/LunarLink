@@ -19,7 +19,6 @@ from rest_framework.response import Response
 from lunarlink.utils import loader, response
 from lunarlink import tasks
 from lunarlink.utils.decorator import request_log
-from lunarlink.utils.host import parse_host
 from lunarlink.utils.parser import Format
 from lunarlink import models
 from apps.exceptions.error import (
@@ -139,7 +138,6 @@ def run_testsuite_pk(request, **kwargs):
     URL参数 query string:
         project
         name
-        host
     """
 
     pk = kwargs.get("pk")
@@ -198,7 +196,6 @@ def run_testsuite_pk(request, **kwargs):
             "body",
             "project",
             "name",
-            "host",
         ],
         properties={
             "body": openapi.Schema(
@@ -210,7 +207,6 @@ def run_testsuite_pk(request, **kwargs):
             ),
             "project": openapi.Schema(type=openapi.TYPE_INTEGER, description="project"),
             "name": openapi.Schema(type=openapi.TYPE_STRING, description="name"),
-            "host": openapi.Schema(type=openapi.TYPE_STRING, description="host"),
         },
     ),
 )
@@ -222,7 +218,6 @@ def run_testsuite(request):
     {
         name: str,
         body: dict,
-        host: str,
         project: int,
     }
     """
@@ -230,16 +225,11 @@ def run_testsuite(request):
         body = request.data["body"]
         project = request.data["project"]
         name = request.data["name"]
-        host = request.data["host"]
     except ObjectDoesNotExist:
         return Response(response.KEY_MISS)
 
     test_case = []
     config = None
-
-    if host != "请选择":
-        host = models.HostIP.objects.get(name=host, project=project).value.splitlines()
-
     for test in body:
         try:
             test = loader.load_test(test=test, project=project)
@@ -253,13 +243,13 @@ def run_testsuite(request):
             config = test
             continue
 
-        test_case.append(parse_host(ip=host, api=test))
+        test_case.append(test)
 
     summary = loader.debug_api(
         api=test_case,
         project=project,
         name=name,
-        config=parse_host(ip=host, api=config),
+        config=config,
         user=request.user.id,
     )
 
@@ -274,7 +264,6 @@ def run_test(request):
 
     入参:
     {
-        host: str,
         body: dict,
         project: int,
         config: null or dict,
@@ -283,15 +272,6 @@ def run_test(request):
     body = request.data.get("body")
     config = request.data.get("config", None)
     project = request.data.get("project")
-    host = request.data.get("host")
-
-    if host != "请选择":
-        try:
-            host = models.HostIP.objects.get(
-                name=host, project=project
-            ).value.splitlines()
-        except ObjectDoesNotExist:
-            return Response(response.HOSTIP_NOT_EXISTS)
 
     if config:
         try:
@@ -310,10 +290,10 @@ def run_test(request):
         return Response(response.CASE_STEP_NOT_EXIST)
 
     summary = loader.debug_api(
-        api=parse_host(ip=host, api=test),
+        api=test,
         project=project,
         name=body.get("name", None),
-        config=parse_host(ip=host, api=config),
+        config=config,
         user=request.user.id,
     )
 
@@ -331,7 +311,6 @@ def run_suite_tree(request):
         relation: list
         name: str
         async: bool
-        host: str
     }
     """
     config = None
@@ -340,16 +319,12 @@ def run_suite_tree(request):
         relation = request.data["relation"]
         back_async = request.data["async"]
         report = request.data["name"]
-        host = request.data["host"]
         config_id = request.data.get("config_id")
     except KeyError:
         return Response(response.KEY_MISS)
     if config_id:
         # 前端有指定config, 会覆盖用例本身的config
         config = literal_eval(models.Config.objects.get(id=config_id).body)
-
-    if host != "请选择":
-        host = models.HostIP.objects.get(name=host, project=project).value.splitlines()
 
     test_sets = []
     suite_list = []
@@ -372,14 +347,14 @@ def run_suite_tree(request):
             for test in test_list:
                 body = literal_eval(test["body"])
                 if body["request"].get("url"):
-                    testcase_list.append(parse_host(ip=host, api=body))
+                    testcase_list.append(body)
                 elif config is None and body["request"].get("base_url"):
                     config = literal_eval(
                         models.Config.objects.get(
                             name=body["name"], project__id=project
                         ).body
                     )
-            config_list.append(parse_host(ip=host, api=config))
+            config_list.append(config)
             test_sets.append(testcase_list)
             config = None
         suite_list.extend(case_name_id_mapping_list)
