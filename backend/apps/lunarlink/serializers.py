@@ -217,54 +217,6 @@ class APIRelatedCaseSerializer(serializers.Serializer):
         fields = ["case_id", "case_name"]
 
 
-# class APISerializer(serializers.ModelSerializer):
-#     """
-#     接口信息序列化
-#     """
-#
-#     body = serializers.SerializerMethodField()
-#     tag_name = serializers.CharField(source="get_tag_display")
-#     cases = serializers.SerializerMethodField()
-#     relation_name = serializers.SerializerMethodField()
-#
-#     class Meta:
-#         model = models.API
-#         fields = [
-#             "id",
-#             "name",
-#             "url",
-#             "method",
-#             "project",
-#             "relation",
-#             "body",
-#             "rig_env",
-#             "tag",
-#             "tag_name",
-#             "update_time",
-#             "is_deleted",
-#             "creator",
-#             "updater",
-#             "cases",
-#             "relation_name",
-#             "create_by",
-#         ]
-#
-#     def get_body(self, obj):
-#         parse = Parse(literal_eval(obj.body))
-#         parse.parse_http()
-#         return parse.testcase
-#
-#     def get_cases(self, obj):
-#         case_steps = models.CaseStep.objects.filter(source_api_id=obj.id)
-#         cases = APIRelatedCaseSerializer(many=True, instance=case_steps)
-#         return cases.data
-#
-#     def get_relation_name(self, obj):
-#         relation_obj = models.Relation.objects.get(project_id=obj.project_id, type=1)
-#         label = get_tree_relation_name(literal_eval(relation_obj.tree), obj.relation)
-#         return label
-
-
 class APISerializer(serializers.ModelSerializer):
     """
     接口信息序列化
@@ -492,18 +444,14 @@ class ScheduleDeSerializer(serializers.Serializer):
         allow_blank=True,
         help_text="Gitlab的项目id，多个用逗号分开，一个项目id对应多个task，但只能在同一个项目中",
     )
-    strategy = serializers.CharField(
-        required=True, help_text="发送通知策略", max_length=20
-    )
+    strategy = serializers.CharField(required=True, help_text="发送通知策略", max_length=20)
     receiver = serializers.CharField(
         required=True, help_text="邮件接收者列表", allow_blank=True, max_length=100
     )
     mail_cc = serializers.CharField(
         required=True, help_text="邮件抄送列表", allow_blank=True, max_length=100
     )
-    name = serializers.CharField(
-        required=True, help_text="定时任务名称", max_length=100
-    )
+    name = serializers.CharField(required=True, help_text="定时任务名称", max_length=100)
     webhook = serializers.CharField(
         required=True,
         help_text="飞书/企微/钉钉webhook url",
