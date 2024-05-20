@@ -98,8 +98,9 @@ class Task:
         :return:
         """
         self.format_crontab()
-        task_obj = celery_models.PeriodicTask.objects.filter(id=task_id)
-        if not task_obj:
+        try:
+            task_obj = celery_models.PeriodicTask.objects.get(id=task_id)
+        except celery_models.PeriodicTask.DoesNotExist:
             raise TaskNotFound
 
         crontab = celery_models.CrontabSchedule.objects.filter(
