@@ -101,7 +101,7 @@ class Task:
         try:
             task_obj = celery_models.PeriodicTask.objects.get(id=task_id)
         except celery_models.PeriodicTask.DoesNotExist:
-            raise TaskNotFound
+            raise TaskNotFound(f"task {task_id} not found")
 
         crontab = celery_models.CrontabSchedule.objects.filter(
             **self.__crontab_time
@@ -110,10 +110,10 @@ class Task:
             crontab = celery_models.CrontabSchedule.objects.create(
                 **self.__crontab_time
             )
-        task_obj.save(
-            name=f"{self.__project}_{self.__name}",
-            crontab=crontab,
-            enabled=self.__switch,
-            args=json.dumps(self.__data, ensure_ascii=False),
-            kwargs=json.dumps(self.__email, ensure_ascii=False),
-        )
+
+        task_obj.name = f"{self.__project}_{self.__name}"
+        task_obj.crontab = crontab
+        task_obj.enabled = self.__switch
+        task_obj.args = json.dumps(self.__data, ensure_ascii=False)
+        task_obj.kwargs = json.dumps(self.__email, ensure_ascii=False)
+        task_obj.save()
