@@ -109,7 +109,7 @@ class Task:
             crontab = celery_models.CrontabSchedule.objects.create(
                 **self.__crontab_time
             )
-        task_obj.update(
+        task_obj.save(
             name=f"{self.__project}_{self.__name}",
             crontab=crontab,
             enabled=self.__switch,
