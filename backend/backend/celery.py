@@ -42,8 +42,8 @@ app.conf.update(
     CELERY_FORCE_EXECV=True,  # 有些情况下可以防止死锁
     task_reject_on_worker_lost=True,  # 任务丢失后拒绝执行
     task_acks_late=True,  # 任务执行完后，不立即删除任务结果
-    CELERY_WORKER_CONCURRENCY=4,  # 并发数, 设置得接近于你的CPU核心数，或者稍微高一点
-    CELERY_MAX_TASKS_PER_CHILD=100,  # 每个worker最多执行300个任务便自我销毁释放内存
+    CELERY_WORKER_CONCURRENCY=2,  # 并发数, 设置得接近于你的CPU核心数，或者稍微高一点
+    CELERY_MAX_TASKS_PER_CHILD=50,  # 每个worker最多执行50个任务便自我销毁释放内存
     CELERY_PREFETCH_MULTIPLIER=1,  # 每次从任务队列取任务的数量
     CELERY_ACCEPT_CONTENT=[
         "application/json",  # 指定接受的内容类型
