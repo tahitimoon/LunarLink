@@ -2,6 +2,7 @@ FROM python:3.9-slim-buster as Base
 WORKDIR /backend
 COPY ./backend/requirements.txt requirements.txt
 
+# 国内打包请替换成 https://mirrors.aliyun.com/pypi/simple
 ARG PIP_INDEX_URL="https://pypi.org/simple"
 # 安装依赖，尽量减少镜像层并在安装后清理
 RUN sed -i 's/deb.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list && \
