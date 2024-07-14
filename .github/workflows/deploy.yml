@@ -89,7 +89,14 @@ jobs:
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         script: |
           cd ${{ secrets.SSH_DIR }}
-          docker stop $(docker ps -aq)
-          docker rm $(docker ps -aq)
-          docker rmi $(docker images -q)
-          sudo docker compose up -d
+          docker stop lunar-link-web lunar-link-django lunar-link-celery
+          docker rm lunar-link-web lunar-link-django lunar-link-celery
+          docker rmi ${{ secrets.DOCKER_HUB_ADDR }}/${{ secrets.DOCKER_NAMESPACE }}/web:${{ vars.VERSION }}
+          docker rmi ${{ secrets.DOCKER_HUB_ADDR }}/${{ secrets.DOCKER_NAMESPACE }}/django:${{ vars.VERSION }}
+          docker rmi ${{ secrets.DOCKER_HUB_ADDR }}/${{ secrets.DOCKER_NAMESPACE }}/celery:${{ vars.VERSION }}
+          sudo docker compose up -d lunar-link-web lunar-link-django lunar-link-celery
+#          cd ${{ secrets.SSH_DIR }}
+#          docker stop $(docker ps -aq)
+#          docker rm $(docker ps -aq)
+#          docker rmi $(docker images -q)
+#          sudo docker compose up -d
