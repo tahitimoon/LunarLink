@@ -118,7 +118,7 @@ class RelationSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.Relation
-        fields = "__all_"
+        fields = "__all__"
 
 
 class AssertSerializer(serializers.Serializer):
