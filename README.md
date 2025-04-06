@@ -141,3 +141,6 @@ celery -A backend worker -B --loglevel=info
 
 ##  Docker构建
 请参考文档[Docker构建](deployment/README.md)
+
+##  鸣谢
+感谢 [Chat2Report](https://ch2report.com/) 友情赞助
