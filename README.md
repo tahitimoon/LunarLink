@@ -144,3 +144,6 @@ celery -A backend worker -B --loglevel=info
 
 ##  鸣谢
 感谢 [Chat2Report](https://ch2report.com/) 友情赞助
+
+##  版权信息
+本项目签署了MIT 授权协议，详情请参阅 [LICENSE](LICENSE)
