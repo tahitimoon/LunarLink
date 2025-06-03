@@ -1,7 +1,7 @@
 {
     "name": "api-web",
     "version": "1.0.0",
-    "description": "一个基于Vue.js的接口自动化测试平台, 提供API用例的录入, 执行和监控",
+    "description": "EasyTest: 一个基于Vue.js的接口自动化测试平台, 提供API用例的录入, 执行和监控",
     "author": "geekbing",
     "private": true,
     "scripts": {

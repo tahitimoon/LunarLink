@@ -43,8 +43,8 @@ schema_view = get_schema_view(
 urlpatterns = [
     path("login/", obtain_jwt_token),
     path("admin/", admin.site.urls),
-    path("api/user/", include("lunaruser.urls")),
-    path("api/lunarlink/", include("lunarlink.urls")),
+    path("api/user/", include("apps.easyuser.urls")),
+    path("api/easytest/", include("apps.easytest.urls")),
     # swagger
     re_path(
         r"^swagger(?P<format>\.json|\.yaml)$",

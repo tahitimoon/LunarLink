@@ -44,7 +44,7 @@ img {
     position: relative;
     left: 16px;
     top: 8px;
-    color: #172b4d;
+    color: #333333; /* Darker grey for better contrast if bg changes */
     font-size: 18px;
 }
 
@@ -64,8 +64,8 @@ img {
     height: 42px;
     font-size: 15px;
     color: #fff;
-    background: #1f5dea;
-    border: 1px solid #1f5dea;
+    background: #4CAF50; /* Primary Green */
+    border: 1px solid #4CAF50; /* Primary Green */
     border-radius: 2px;
 }
 
@@ -80,7 +80,7 @@ img {
 .form-foot a,
 .form-foot a:hover,
 .form-foot a:active {
-    color: #1f5dea;
+    color: #4CAF50; /* Primary Green */
     text-decoration: none;
 }
 

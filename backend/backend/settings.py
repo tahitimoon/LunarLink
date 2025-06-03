@@ -50,8 +50,8 @@ INSTALLED_APPS = [
     "drf_yasg",
     "django_celery_beat",
     "django_celery_results",
-    "lunaruser",
-    "lunarlink",
+    "easyuser",
+    "easytest",
 ]
 
 MIDDLEWARE = [
@@ -168,7 +168,7 @@ JWT_AUTH = {
     "JWT_ALLOW_REFRESH": True,
 }
 
-AUTH_USER_MODEL = "lunaruser.MyUser"
+AUTH_USER_MODEL = "easyuser.MyUser"
 
 # ====================================#
 # ****************swagger************#
@@ -268,7 +268,7 @@ LOGGING = {
             "level": "INFO",
             "propagate": True,
         },
-        "lunarlink": {
+        "easytest": {
             "handlers": ["default", "console"],
             "level": "INFO",
             "propagate": True,

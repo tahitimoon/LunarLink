@@ -2,13 +2,13 @@
 
 本地快速部署或线上单机部署参照如下说明
 
-如果本地开发还是参照`LunarLink`目录下的说明，搭建开发环境
+如果本地开发还是参照`EasyTest`目录下的说明，搭建开发环境
 
 ## 修改配置
 
 ```bash
 # 进入项目根目录
-cd LunarLink
+cd EasyTest
 
 # 将.env.example文件重命名为.env 并配置相关参数
 mv .env.example .env
@@ -23,7 +23,7 @@ docker-compose up -d
 
 ## 第一次运行
 
-进入django容器初始化数据库`docker exec -it lunar-link-django /bin/bash`
+进入django容器初始化数据库`docker exec -it easy-test-django /bin/bash`
 
 ```bash
 # 执行迁移命令：

@@ -80,21 +80,21 @@ export const login = params => {
 };
 
 export const addProject = params => {
-    return axios.post("/api/lunarlink/project", params).then(res => res.data);
+    return axios.post("/api/easytest/project", params).then(res => res.data);
 };
 
 export const updateProject = params => {
-    return axios.patch("/api/lunarlink/project", params).then(res => res.data);
+    return axios.patch("/api/easytest/project", params).then(res => res.data);
 };
 
 export const deleteProject = config => {
     return axios
-        .delete("/api/lunarlink/project", config)
+        .delete("/api/easytest/project", config)
         .then(res => res.data);
 };
 
 export const getProjectList = () => {
-    return axios.get("/api/lunarlink/project").then(res => res.data);
+    return axios.get("/api/easytest/project").then(res => res.data);
 };
 
 export const getPagination = url => {
@@ -106,102 +106,102 @@ export const getUserList = () => {
 };
 
 export const getDashboard = () => {
-    return axios.get("/api/lunarlink/dashboard").then(res => res.data);
+    return axios.get("/api/easytest/dashboard").then(res => res.data);
 };
 
 export const getVisit = params => {
-    return axios.get("/api/lunarlink/visit", params).then(res => res.data);
+    return axios.get("/api/easytest/visit", params).then(res => res.data);
 };
 
 export const getProjectDetail = pk => {
-    return axios.get("/api/lunarlink/project/" + pk).then(res => res.data);
+    return axios.get("/api/easytest/project/" + pk).then(res => res.data);
 };
 
 export const updateTree = (treeId, params) => {
     return axios
-        .patch("/api/lunarlink/tree/" + treeId, params)
+        .patch("/api/easytest/tree/" + treeId, params)
         .then(res => res.data);
 };
 
 export const getTree = (projectId, params) => {
     return axios
-        .get("/api/lunarlink/tree/" + projectId, params)
+        .get("/api/easytest/tree/" + projectId, params)
         .then(res => res.data.data);
 };
 
 export const getAllConfig = projectId => {
     return axios
-        .get("/api/lunarlink/config/" + projectId)
+        .get("/api/easytest/config/" + projectId)
         .then(res => res.data);
 };
 
 export const getProjectYapiInfo = pk => {
     return axios
-        .get("/api/lunarlink/project/yapi/" + pk)
+        .get("/api/easytest/project/yapi/" + pk)
         .then(res => res.data);
 };
 
 export const addYAPI = projectId => {
     return axios
-        .post("/api/lunarlink/yapi/" + projectId)
+        .post("/api/easytest/yapi/" + projectId)
         .then(res => res.data);
 };
 
 export const addAPI = params => {
-    return axios.post("/api/lunarlink/api", params).then(res => res.data);
+    return axios.post("/api/easytest/api", params).then(res => res.data);
 };
 
 export const updateAPI = (url, params) => {
     return axios
-        .patch("/api/lunarlink/api/" + url, params)
+        .patch("/api/easytest/api/" + url, params)
         .then(res => res.data);
 };
 
 export const apiList = params => {
-    return axios.get("/api/lunarlink/api", params).then(res => res.data);
+    return axios.get("/api/easytest/api", params).then(res => res.data);
 };
 
 export const delAllAPI = params => {
-    return axios.delete("/api/lunarlink/api", params).then(res => res.data);
+    return axios.delete("/api/easytest/api", params).then(res => res.data);
 };
 
 export const tagAPI = params => {
-    return axios.patch("/api/lunarlink/api/tag", params).then(res => res.data);
+    return axios.patch("/api/easytest/api/tag", params).then(res => res.data);
 };
 
 export const delAPI = apiId => {
-    return axios.delete("/api/lunarlink/api/" + apiId).then(res => res.data);
+    return axios.delete("/api/easytest/api/" + apiId).then(res => res.data);
 };
 
 export const copyAPI = (apiId, params) => {
     return axios
-        .post("/api/lunarlink/api/" + apiId, params)
+        .post("/api/easytest/api/" + apiId, params)
         .then(res => res.data);
 };
 
 export const syncCaseStep = apiId => {
     return axios
-        .patch("/api/lunarlink/api/sync/" + apiId)
+        .patch("/api/easytest/api/sync/" + apiId)
         .then(res => res.data);
 };
 
 export const getAPISingle = apiId => {
-    return axios.get("/api/lunarlink/api/" + apiId).then(res => res.data);
+    return axios.get("/api/easytest/api/" + apiId).then(res => res.data);
 };
 
 export const moveAPI = params => {
     return axios
-        .patch("/api/lunarlink/api/move_api", params)
+        .patch("/api/easytest/api/move_api", params)
         .then(res => res.data);
 };
 
 export const getPaginationByPage = params => {
-    return axios.get("/api/lunarlink/api", params).then(res => res.data);
+    return axios.get("/api/easytest/api", params).then(res => res.data);
 };
 
 export const runAPIByPk = (apiId, params, cancelToken) => {
     return axios
-        .get("/api/lunarlink/run_api_pk/" + apiId, {
+        .get("/api/easytest/run_api_pk/" + apiId, {
             params: params,
             cancelToken: cancelToken
         })
@@ -209,83 +209,83 @@ export const runAPIByPk = (apiId, params, cancelToken) => {
 };
 
 export const runSingleAPI = params => {
-    return axios.post("/api/lunarlink/run_api", params).then(res => res.data);
+    return axios.post("/api/easytest/run_api", params).then(res => res.data);
 };
 
 // TODO: 上传文件接口需要优化，后端当前不存在此接口
 export const uploadFile = url => {
-    return baseUrl + "/api/lunarlink/file/?token=" + store.token;
+    return baseUrl + "/api/easytest/file/?token=" + store.token;
 };
 
 export const addConfig = params => {
-    return axios.post("/api/lunarlink/config", params).then(res => res.data);
+    return axios.post("/api/easytest/config", params).then(res => res.data);
 };
 
 export const updateConfig = (configId, params) => {
     return axios
-        .patch("/api/lunarlink/config/" + configId, params)
+        .patch("/api/easytest/config/" + configId, params)
         .then(res => res.data);
 };
 
 export const configList = params => {
-    return axios.get("/api/lunarlink/config", params).then(res => res.data);
+    return axios.get("/api/easytest/config", params).then(res => res.data);
 };
 
 export const delAllConfig = params => {
-    return axios.delete("/api/lunarlink/config", params).then(res => res.data);
+    return axios.delete("/api/easytest/config", params).then(res => res.data);
 };
 
 export const delConfig = configId => {
     return axios
-        .delete("/api/lunarlink/config/" + configId)
+        .delete("/api/easytest/config/" + configId)
         .then(res => res.data);
 };
 
 export const copyConfig = (configId, params) => {
     return axios
-        .post("/api/lunarlink/config/" + configId, params)
+        .post("/api/easytest/config/" + configId, params)
         .then(res => res.data);
 };
 
 export const getConfigPaginationByPage = params => {
-    return axios.get("/api/lunarlink/config", params).then(res => res.data);
+    return axios.get("/api/easytest/config", params).then(res => res.data);
 };
 
 export const delAllTest = params => {
-    return axios.delete("/api/lunarlink/test", params).then(res => res.data);
+    return axios.delete("/api/easytest/test", params).then(res => res.data);
 };
 
 export const testList = params => {
-    return axios.get("/api/lunarlink/test", params).then(res => res.data);
+    return axios.get("/api/easytest/test", params).then(res => res.data);
 };
 
 export const runSuiteTree = params => {
     return axios
-        .post("/api/lunarlink/run_suite_tree", params)
+        .post("/api/easytest/run_suite_tree", params)
         .then(res => res.data);
 };
 
 export const moveCase = params => {
     return axios
-        .patch("/api/lunarlink/test/move_case", params)
+        .patch("/api/easytest/test/move_case", params)
         .then(res => res.data);
 };
 
 export const tagCase = params => {
     return axios
-        .patch("/api/lunarlink/test/tag", params)
+        .patch("/api/easytest/test/tag", params)
         .then(res => res.data);
 };
 
 export const runTestByPk = (testId, params) => {
     return axios
-        .get("/api/lunarlink/run_testsuite_pk/" + testId, params)
+        .get("/api/easytest/run_testsuite_pk/" + testId, params)
         .then(res => res.data);
 };
 
 export const runTestByPkWithCancel = (testId, params, cancelToken) => {
     return axios
-        .get("/api/lunarlink/run_testsuite_pk/" + testId, {
+        .get("/api/easytest/run_testsuite_pk/" + testId, {
             params: params,
             cancelToken: cancelToken
         })
@@ -293,82 +293,82 @@ export const runTestByPkWithCancel = (testId, params, cancelToken) => {
 };
 
 export const getTestPaginationByPage = params => {
-    return axios.get("/api/lunarlink/test", params).then(res => res.data);
+    return axios.get("/api/easytest/test", params).then(res => res.data);
 };
 
 export const editTest = testId => {
     return axios
-        .get("/api/lunarlink/teststep/" + testId)
+        .get("/api/easytest/teststep/" + testId)
         .then(res => res.data);
 };
 
 export const copyTest = (testId, params) => {
     return axios
-        .post("/api/lunarlink/test/" + testId, params)
+        .post("/api/easytest/test/" + testId, params)
         .then(res => res.data);
 };
 
 export const delTest = pk => {
-    return axios.delete("/api/lunarlink/test/" + pk).then(res => res.data);
+    return axios.delete("/api/easytest/test/" + pk).then(res => res.data);
 };
 
 export const syncTest = testId => {
-    return axios.put("/api/lunarlink/test/" + testId).then(res => res.data);
+    return axios.put("/api/easytest/test/" + testId).then(res => res.data);
 };
 
 export const addTestCase = params => {
-    return axios.post("/api/lunarlink/test", params).then(res => res.data);
+    return axios.post("/api/easytest/test", params).then(res => res.data);
 };
 
 export const updateTestCase = (testId, params) => {
     return axios
-        .patch("/api/lunarlink/test/" + testId, params)
+        .patch("/api/easytest/test/" + testId, params)
         .then(res => res.data);
 };
 
 export const runSingleTestSuite = params => {
     return axios
-        .post("/api/lunarlink/run_testsuite", params)
+        .post("/api/easytest/run_testsuite", params)
         .then(res => res.data);
 };
 
 export const runSingleTest = params => {
-    return axios.post("/api/lunarlink/run_test", params).then(res => res.data);
+    return axios.post("/api/easytest/run_test", params).then(res => res.data);
 };
 
 export const getAPIPaginationByPage = params => {
-    return axios.get("/api/lunarlink/api", params).then(res => res.data);
+    return axios.get("/api/easytest/api", params).then(res => res.data);
 };
 
 export const deleteVariables = variableId => {
     return axios
-        .delete("/api/lunarlink/variables/" + variableId)
+        .delete("/api/easytest/variables/" + variableId)
         .then(res => res.data);
 };
 
 export const variablesList = params => {
-    return axios.get("/api/lunarlink/variables", params).then(res => res.data);
+    return axios.get("/api/easytest/variables", params).then(res => res.data);
 };
 
 export const getVariablesPaginationByPage = params => {
-    return axios.get("/api/lunarlink/variables", params).then(res => res.data);
+    return axios.get("/api/easytest/variables", params).then(res => res.data);
 };
 
 export const delAllVariables = params => {
     return axios
-        .delete("/api/lunarlink/variables", params)
+        .delete("/api/easytest/variables", params)
         .then(res => res.data);
 };
 
 export const addVariables = params => {
     return axios
-        .post("/api/lunarlink/variables", params)
+        .post("/api/easytest/variables", params)
         .then(res => res.data);
 };
 
 export const updateVariables = (variablesId, params) => {
     return axios
-        .patch("/api/lunarlink/variables/" + variablesId, params)
+        .patch("/api/easytest/variables/" + variablesId, params)
         .then(res => res.data);
 };
 
@@ -382,118 +382,118 @@ export const loginLogPaginationByPage = params => {
 
 export const runDebugtalk = params => {
     return axios
-        .post("/api/lunarlink/debugtalk", params)
+        .post("/api/easytest/debugtalk", params)
         .then(res => res.data);
 };
 
 export const updateDebugtalk = params => {
     return axios
-        .patch("/api/lunarlink/debugtalk", params)
+        .patch("/api/easytest/debugtalk", params)
         .then(res => res.data);
 };
 
 export const getDebugtalk = debugtalkId => {
     return axios
-        .get("/api/lunarlink/debugtalk/" + debugtalkId)
+        .get("/api/easytest/debugtalk/" + debugtalkId)
         .then(res => res.data);
 };
 
 export const delTasks = taskId => {
     return axios
-        .delete("/api/lunarlink/schedule/" + taskId)
+        .delete("/api/easytest/schedule/" + taskId)
         .then(res => res.data);
 };
 
 export const taskList = params => {
-    return axios.get("/api/lunarlink/schedule", params).then(res => res.data);
+    return axios.get("/api/easytest/schedule", params).then(res => res.data);
 };
 
 export const patchTask = (taskId, params) => {
     return axios
-        .patch("/api/lunarlink/schedule/" + taskId, params)
+        .patch("/api/easytest/schedule/" + taskId, params)
         .then(res => res.data);
 };
 
 export const copyTask = (taskId, params) => {
     return axios
-        .post("/api/lunarlink/schedule/" + taskId, params)
+        .post("/api/easytest/schedule/" + taskId, params)
         .then(res => res.data);
 };
 
 export const runTask = taskId => {
     return axios
-        .get("/api/lunarlink/schedule/" + taskId)
+        .get("/api/easytest/schedule/" + taskId)
         .then(res => res.data);
 };
 
 export const getTaskPaginationByPage = params => {
-    return axios.get("/api/lunarlink/schedule", params).then(res => res.data);
+    return axios.get("/api/easytest/schedule", params).then(res => res.data);
 };
 
 export const addTask = params => {
-    return axios.post("/api/lunarlink/schedule", params).then(res => res.data);
+    return axios.post("/api/easytest/schedule", params).then(res => res.data);
 };
 
 export const updateTask = (taskId, data) => {
     return axios({
         method: "put",
-        url: "/api/lunarlink/schedule/" + taskId,
+        url: "/api/easytest/schedule/" + taskId,
         data: data
     }).then(res => res.data);
 };
 
 export const reportList = params => {
-    return axios.get("/api/lunarlink/reports", params).then(res => res.data);
+    return axios.get("/api/easytest/reports", params).then(res => res.data);
 };
 
 export const getReportPaginationByPage = params => {
-    return axios.get("/api/lunarlink/reports", params).then(res => res.data);
+    return axios.get("/api/easytest/reports", params).then(res => res.data);
 };
 
 export const runMultiTest = params => {
     return axios
-        .post("/api/lunarlink/run_multi_tests", params)
+        .post("/api/easytest/run_multi_tests", params)
         .then(res => res.data);
 };
 
 export const delReports = reportId => {
     return axios
-        .delete("/api/lunarlink/reports/" + reportId)
+        .delete("/api/easytest/reports/" + reportId)
         .then(res => res.data);
 };
 
 export const delAllReports = params => {
     return axios
-        .delete("/api/lunarlink/reports", params)
+        .delete("/api/easytest/reports", params)
         .then(res => res.data);
 };
 
 export const recordStart = params => {
     return axios
-        .get("/api/lunarlink/record/start", params)
+        .get("/api/easytest/record/start", params)
         .then(res => res.data);
 };
 
 export const recordStop = params => {
     return axios
-        .get("/api/lunarlink/record/stop", params)
+        .get("/api/easytest/record/stop", params)
         .then(res => res.data);
 };
 
 export const getRecordStatus = params => {
     return axios
-        .get("/api/lunarlink/record/status", params)
+        .get("/api/easytest/record/status", params)
         .then(res => res.data);
 };
 
 export const recordRemove = params => {
     return axios
-        .get("/api/lunarlink/record/remove", params)
+        .get("/api/easytest/record/remove", params)
         .then(res => res.data);
 };
 
 export const generateTestCase = params => {
     return axios
-        .post("/api/lunarlink/record_case", params)
+        .post("/api/easytest/record_case", params)
         .then(res => res.data);
 };

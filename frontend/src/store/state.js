@@ -7,8 +7,8 @@ export default {
     is_superuser: false,
     show_hosts: false,
     duration: 2000,
-    report_path: "/api/lunarlink/reports/",
-    LunarLink: process.env.LUNAR_LINK,
+    report_path: "/api/easytest/reports/",
+    EasyTest: process.env.EASY_TEST_APP_URL, // Renamed key and ENV var reference
     docsURL: process.env.DOCS_URL,
     recordCaseDocsURL: process.env.RECORD_CASE_DOCS_URL
 };

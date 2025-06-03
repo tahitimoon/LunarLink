@@ -4,10 +4,10 @@
 
 ```bash
 # 克隆项目
-git clone https://github.com/tahitimoon/LunarLink.git
+git clone https://github.com/tahitimoon/EasyTest.git
 
 # 进入项目目录
-cd LunarLink/frontend
+cd EasyTest/frontend
 
 # 安装依赖
 yarn install --registry=https://registry.npmmirror.com

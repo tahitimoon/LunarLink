@@ -1,11 +1,11 @@
 version: "3"
 services:
-  lunar-link-django:
+  easy-test-django:
     build:
       context: .
       dockerfile: ./deployment/django/Dockerfile
-    image: lunar-link-django
-    container_name: lunar-link-django
+    image: easy-test-django
+    container_name: easy-test-django
     working_dir: /backend
     environment:
       PYTHONUNBUFFERED: 1
@@ -21,20 +21,20 @@ services:
       network:
         ipv4_address: 177.8.0.12
 
-  lunar-link-web:
+  easy-test-web:
     build:
       context: ./
       dockerfile: ./deployment/web/Dockerfile
-    image: lunar-link-web
-    container_name: lunar-link-web
+    image: easy-test-web
+    container_name: easy-test-web
     depends_on:
-      - lunar-link-django
+      - easy-test-django
     ports:
       - "8081:8081"
     expose:
       - 8081
     volumes:
-      - ./deployment/web/nginx.conf:/etc/nginx/conf.d/lunar_link.conf
+      - ./deployment/web/nginx.conf:/etc/nginx/conf.d/easy_test.conf
     environment:
       TZ: Asia/Shanghai
     restart: always
@@ -42,14 +42,14 @@ services:
       network:
         ipv4_address: 177.8.0.11
 
-  lunar-link-celery:
+  easy-test-celery:
     build:
       context: .
       dockerfile: ./deployment/celery/Dockerfile
-    image: lunar-link-celery
-    container_name: lunar-link-celery
+    image: easy-test-celery
+    container_name: easy-test-celery
     depends_on:
-      - lunar-link-mysql
+      - easy-test-mysql
     environment:
       PYTHONUNBUFFERED: 1
       TZ: Asia/Shanghai
@@ -60,14 +60,14 @@ services:
       network:
         ipv4_address: 177.8.0.14
 
-  lunar-link-proxy:
+  easy-test-proxy:
     build:
       context: .
       dockerfile: ./deployment/proxy/Dockerfile
-    image: lunar-link-proxy
-    container_name: lunar-link-proxy
+    image: easy-test-proxy
+    container_name: easy-test-proxy
     depends_on:
-      - lunar-link-django
+      - easy-test-django
     environment:
       PYTHONUNBUFFERED: 1
       TZ: Asia/Shanghai
@@ -82,10 +82,10 @@ services:
       network:
         ipv4_address: 177.8.0.16
 
-  lunar-link-mysql:
+  easy-test-mysql:
     # 如果您是 arm64 架构：如 MacOS 的 M1，请修改镜像为 image: mysql/mysql-server:5.7
     image: mysql:5.7
-    container_name: lunar-link-mysql
+    container_name: easy-test-mysql
     command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
     privileged: true
     restart: always
@@ -94,7 +94,7 @@ services:
     expose:
       - 3306
     environment:
-      MYSQL_DATABASE: "lunarlink"
+      MYSQL_DATABASE: "easytest"
       MYSQL_ROOT_PASSWORD: "root"
       TZ: Asia/Shanghai
     volumes:
@@ -106,9 +106,9 @@ services:
       network:
         ipv4_address: 177.8.0.13
 
-  lunar-link-rabbitmq:
+  easy-test-rabbitmq:
     image: rabbitmq:3-management
-    container_name: lunar-link-rabbitmq
+    container_name: easy-test-rabbitmq
     restart: always
     ports:
       - "5672:5672"
@@ -124,9 +124,9 @@ services:
       network:
         ipv4_address: 177.8.0.15
 
-  lunar-link-redis:
+  easy-test-redis:
     image: redis:6.2.6-alpine
-    container_name: lunar-link-redis
+    container_name: easy-test-redis
     restart: always
     ports:
       - "6379:6379"

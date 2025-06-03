@@ -1,8 +1,8 @@
-# LunarLink
-[![GitHub License](https://img.shields.io/github/license/tahitimoon/LunarLink?color=yellow)](https://github.com/tahitimoon/LunarLink/blob/main/LICENSE)
-[![GitHub Release](https://img.shields.io/github/v/release/tahitimoon/LunarLink)](https://github.com/tahitimoon/LunarLink/releases)
-[![GitHub Repo stars](https://img.shields.io/github/stars/tahitimoon/LunarLink)](https://github.com/tahitimoon/LunarLink/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/tahitimoon/LunarLink)](https://github.com/tahitimoon/LunarLink/fork)
+# EasyTest
+[![GitHub License](https://img.shields.io/github/license/tahitimoon/EasyTest?color=yellow)](https://github.com/tahitimoon/EasyTest/blob/main/LICENSE)
+[![GitHub Release](https://img.shields.io/github/v/release/tahitimoon/EasyTest)](https://github.com/tahitimoon/EasyTest/releases)
+[![GitHub Repo stars](https://img.shields.io/github/stars/tahitimoon/EasyTest)](https://github.com/tahitimoon/EasyTest/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/tahitimoon/EasyTest)](https://github.com/tahitimoon/EasyTest/fork)
 [![Python Version](https://img.shields.io/badge/Python-%3E%3D3.9.5-green)](https://python.org/)
 [![Django Version](https://img.shields.io/badge/Django-3.2-blue)](https://docs.djangoproject.com/zh-hans/3.2/)
 [![Static Badge](https://img.shields.io/badge/Node-%3E%3D16.0.0-brightgreen)](https://nodejs.org/en)
@@ -12,7 +12,7 @@
 
 基于HttpRunner + Django + Vue + Element UI 的接口自动化测试平台，生产可用。
 
-此外，非常感谢 [花菜](https://github.com/lihuacai168)。没有 AnotherFasterRunner 就不会有 LunarLink :)
+此外，非常感谢 [花菜](https://github.com/lihuacai168)。没有 AnotherFasterRunner 就不会有 EasyTest :)
 
 ## 技术栈
 
@@ -59,10 +59,10 @@ Redis >= 6.2.6
 
 ```bash
 # 克隆项目
-git clone https://github.com/tahitimoon/LunarLink.git
+git clone https://github.com/tahitimoon/EasyTest.git
 
 # 进入项目目录
-cd LunarLink/frontend
+cd EasyTest/frontend
 
 # 安装依赖
 yarn install --registry=https://registry.npmmirror.com
@@ -81,10 +81,10 @@ yarn start
 
 ```bash
 # 克隆项目
-git https://github.com/tahitimoon/LunarLink.git
+git https://github.com/tahitimoon/EasyTest.git
 
 # 进入项目目录
-cd LunarLink/backend
+cd EasyTest/backend
 
 # 将.env.example文件重命名为.env 并配置相关参数
 mv .env.example .env

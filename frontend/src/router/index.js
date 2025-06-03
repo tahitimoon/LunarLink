@@ -7,11 +7,11 @@ import Home from "@/pages/home/Home";
 import ProjectList from "@/pages/project/ProjectList";
 import ProjectDetail from "@/pages/project/ProjectDetail";
 import DebugTalk from "@/pages/httprunner/DebugTalk";
-import RecordApi from "@/pages/lunarlink/api/RecordApi";
-import RecordConfig from "@/pages/lunarlink/config/RecordConfig";
-import TestCase from "@/pages/lunarlink/case/TestCase";
-import AutoTest from "@/pages/lunarlink/case/AutoTest";
-import RecordCase from "@/pages/lunarlink/case/RecordCase";
+import RecordApi from "@/pages/easytest/api/RecordApi";
+import RecordConfig from "@/pages/easytest/config/RecordConfig";
+import TestCase from "@/pages/easytest/case/TestCase";
+import AutoTest from "@/pages/easytest/case/AutoTest";
+import RecordCase from "@/pages/easytest/case/RecordCase";
 import GlobalEnv from "@/pages/variables/GlobalEnv";
 import Tasks from "@/pages/task/Tasks";
 import ReportList from "@/pages/reports/ReportList";
@@ -23,18 +23,18 @@ export default new Router({
     routes: [
         {
             path: "/",
-            redirect: "/lunarlink/login"
+            redirect: "/easytest/login"
         },
         {
-            path: "/lunarlink/login",
+            path: "/easytest/login",
             name: "Login",
             component: Login,
             meta: {
-                title: "LunarLink测试平台"
+                title: "EasyTest测试平台"
             }
         },
         {
-            path: "/lunarlink",
+            path: "/easytest",
             name: "Index",
             component: Home,
             meta: {
