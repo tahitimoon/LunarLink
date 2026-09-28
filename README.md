@@ -1,4 +1,5 @@
 # LunarLink
+
 [![GitHub License](https://img.shields.io/github/license/tahitimoon/LunarLink?color=yellow)](https://github.com/tahitimoon/LunarLink/blob/main/LICENSE)
 [![GitHub Release](https://img.shields.io/github/v/release/tahitimoon/LunarLink)](https://github.com/tahitimoon/LunarLink/releases)
 [![GitHub Repo stars](https://img.shields.io/github/stars/tahitimoon/LunarLink)](https://github.com/tahitimoon/LunarLink/stargazers)
@@ -6,7 +7,6 @@
 [![Python Version](https://img.shields.io/badge/Python-%3E%3D3.9.5-green)](https://python.org/)
 [![Django Version](https://img.shields.io/badge/Django-3.2-blue)](https://docs.djangoproject.com/zh-hans/3.2/)
 [![Static Badge](https://img.shields.io/badge/Node-%3E%3D16.0.0-brightgreen)](https://nodejs.org/en)
-
 
 ## 平台简介
 
@@ -43,7 +43,7 @@
 - 定时任务：可设置定时任务，遵循crontab表达式，可在线开启、关闭，用例执行支持串行、并行，完成后测试报告推送企业微信
 - 历史报告：保存定时、调试、异步等不同类型的测试报告，可在线查看、筛选、删除，还可查看他人测试报告
 
-##  准备工作
+## 准备工作
 
 ```
 Python >= 3.9.5 (推荐3.9.x版本)
@@ -53,7 +53,7 @@ RabbitMQ >= 3.x-management(默认需要，推荐最新版)
 Redis >= 6.2.6
 ```
 
-##  前端 ♝
+## 前端 ♝
 
 建议使用yarn，项目提供了`yarn.lock`，使用其他包管理器，容易出现版本依赖问题。
 
@@ -77,7 +77,7 @@ yarn start
 # yarn build
 ```
 
-##  后端 💈
+## 后端 💈
 
 ```bash
 # 克隆项目
@@ -106,7 +106,7 @@ python3 manage.py runserver
 python3 proxy.py
 ```
 
-##  访问项目
+## 访问项目
 
 ```bash
 # 登录管理后台，设置账号姓名
@@ -127,7 +127,7 @@ http://127.0.0.1:8000/swagger/
 celery -A backend worker -B --loglevel=info
 ```
 
-##  演示图 ✅
+## 演示图 ✅
 
 ![](screenshots/1.png)
 
@@ -139,11 +139,14 @@ celery -A backend worker -B --loglevel=info
 
 ![](screenshots/5.gif)
 
-##  Docker构建
+## Docker构建
+
 请参考文档[Docker构建](deployment/README.md)
 
-##  鸣谢
-感谢 [Chat2Report](https://ch2report.com/) 友情赞助
+## 鸣谢
 
-##  版权信息
+感谢 [Chat2Report](https://ch2report.com/)、[Gold Price Per Gram](https://gold-price-per-gram.net/) 友情赞助
+
+## 版权信息
+
 本项目签署了MIT 授权协议，详情请参阅 [LICENSE](LICENSE)
