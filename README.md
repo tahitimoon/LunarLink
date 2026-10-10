@@ -145,7 +145,9 @@ celery -A backend worker -B --loglevel=info
 
 ## 鸣谢
 
-感谢 [Chat2Report](https://ch2report.com/)、[Gold Price Per Gram](https://gold-price-per-gram.net/) 友情赞助
+- [Chat2Report](https://ch2report.com/) — Chat with 130,000+ financial reports using AI. Get cited answers and multilingual insights for company research and financial analysis.
+- [Gold Price Per Gram](https://gold-price-per-gram.net/) — Check live gold prices per gram for 10K–24K gold. Calculate melt and scrap gold value, compare buyer payouts and explore price history. Free, no signup.
+- [Krillion Hint](https://krillionhint.com/) — Find verified high-scoring Krillion Daily Dive answers, spoiler-free hints, scoring guides and past dives. Free, no signup.
 
 ## 版权信息
 
